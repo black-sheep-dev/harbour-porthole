@@ -1,0 +1,108 @@
+import QtQuick 2.0
+import Sailfish.Silica 1.0
+
+import org.nubecula.harbour.porthole 1.0
+
+CoverBackground {
+    property bool enabled: false
+
+    Image {
+        anchors.left: parent.left
+        anchors.top: parent.top
+        width: parent.width
+        height: sourceSize.height * width / sourceSize.width
+        smooth: true
+        source: "qrc:///cover/cover-background"
+        opacity: 0.1
+    }
+
+    Label {
+        id: headerLabel
+        anchors {
+            horizontalCenter: parent.horizontalCenter
+            top: parent.top
+            topMargin: Theme.paddingLarge
+        }
+        horizontalAlignment: Text.AlignHCenter
+        color: Theme.primaryColor
+        font.pixelSize: Theme.fontSizeLarge
+        text: "Porthole"
+    }
+
+    Column {
+        anchors{
+            top: headerLabel.bottom
+            topMargin: Theme.paddingSmall
+        }
+        width: parent.width
+        spacing: Theme.paddingSmall
+
+        Label {
+            text: qsTr("Total Queries")
+            x: Theme.horizontalPageMargin
+            font.pixelSize: Theme.fontSizeExtraSmall
+            font.bold: true
+        }
+        Label {
+            id: totalQueries
+            x: Theme.horizontalPageMargin
+            font.pixelSize: Theme.fontSizeExtraSmall
+        }
+        Label {
+            text: qsTr("Queries Blocked")
+            x: Theme.horizontalPageMargin
+            font.pixelSize: Theme.fontSizeExtraSmall
+            font.bold: true
+        }
+        Label {
+            id: blockedQueries
+            x: Theme.horizontalPageMargin
+            font.pixelSize: Theme.fontSizeExtraSmall
+        }
+        Label {
+            text: qsTr("Percent Blocked")
+            x: Theme.horizontalPageMargin
+            font.pixelSize: Theme.fontSizeExtraSmall
+            font.bold: true
+        }
+        Label {
+            id: blockedPercent
+            x: Theme.horizontalPageMargin
+            font.pixelSize: Theme.fontSizeExtraSmall
+
+        }
+    }
+
+    CoverActionList {
+        id: coverAction
+
+        CoverAction {
+            iconSource: enabled ? "image://theme/icon-cover-pause" : "image://theme/icon-cover-play"
+            onTriggered: Porthole.sendRequest(enabled ? "disable" : "enable", true)
+        }
+
+        CoverAction {
+            iconSource: "image://theme/icon-cover-refresh"
+            onTriggered: refresh()
+        }
+    }
+
+    function refresh() {
+        Porthole.sendRequest("summaryRaw")
+    }
+
+    Component.onCompleted: refresh()
+
+    Connections {
+        target: Porthole
+        onRequestFinished: {
+            if (query === "status" || query === "enable" || query === "disable" || query === "summaryRaw") enabled = (data.status === "enabled")
+
+            if (query === "summaryRaw") {
+                totalQueries.text = data.dns_queries_today
+                blockedQueries.text = data.ads_blocked_today
+                blockedPercent.text = Number(data.ads_percentage_today).toLocaleString(Qt.locale()) + " %"
+            }
+        }
+    }
+}
