@@ -6,7 +6,6 @@
 
 #include <QJsonDocument>
 #include <QJsonParseError>
-#include <QJsonObject>
 #include <QNetworkReply>
 #include <QNetworkRequest>
 #include <QSettings>
@@ -68,6 +67,11 @@ QString Porthole::accessToken() const
     return m_accessToken;
 }
 
+QJsonObject Porthole::summary() const
+{
+    return m_summary;
+}
+
 QString Porthole::url() const
 {
     return m_url;
@@ -100,6 +104,15 @@ void Porthole::setAccessToken(const QString &token)
 
     m_accessToken = token;
     emit accessTokenChanged(m_accessToken);
+}
+
+void Porthole::setSummary(const QJsonObject &summary)
+{
+    if (m_summary == summary)
+        return;
+
+    m_summary = summary;
+    emit summaryChanged(m_summary);
 }
 
 void Porthole::setUrl(const QString &url)
@@ -155,6 +168,9 @@ void Porthole::onRequestFinished(QNetworkReply *reply)
 #endif
         return;
     }
+
+    if (query == QLatin1String("summaryRaw"))
+        setSummary(obj);
 
     emit requestFinished(query, obj);
 }

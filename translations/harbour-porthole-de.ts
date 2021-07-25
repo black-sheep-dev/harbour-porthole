@@ -49,6 +49,45 @@
     </message>
 </context>
 <context>
+    <name>AnalysisPage</name>
+    <message>
+        <source>Top permitted</source>
+        <translation>Top Erlaubte</translation>
+    </message>
+    <message>
+        <source>Show top permitted domains</source>
+        <translation>Zeige meist erlaubte Domains</translation>
+    </message>
+    <message>
+        <source>Top blocked</source>
+        <translation>Top Geblockte</translation>
+    </message>
+    <message>
+        <source>Show top blocked domains</source>
+        <translation>Zeige meist geblockten Domains</translation>
+    </message>
+    <message>
+        <source>Analysis</source>
+        <translation>Analyse</translation>
+    </message>
+    <message>
+        <source>Top clients</source>
+        <translation>Top Clients</translation>
+    </message>
+    <message>
+        <source>Show top clients</source>
+        <translation>Zeige Top Clients</translation>
+    </message>
+    <message>
+        <source>Top clients blocked</source>
+        <translation>Top Clients geblockt</translation>
+    </message>
+    <message>
+        <source>Show top blocked clients</source>
+        <translation>Zeige meist blockierte Clients</translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
         <source>Total Queries</source>
@@ -104,6 +143,14 @@
     <message>
         <source>Settings</source>
         <translation>Einstellungen</translation>
+    </message>
+    <message>
+        <source>Total Clients</source>
+        <translation>Clients total</translation>
+    </message>
+    <message>
+        <source>Analysis</source>
+        <translation>Analyse</translation>
     </message>
 </context>
 <context>

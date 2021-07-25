@@ -4,6 +4,8 @@
 #include <QCoreApplication>
 
 #include "porthole.h"
+#include "models/countermodel.h"
+#include "models/sortmodel.h"
 
 int main(int argc, char *argv[])
 {
@@ -16,6 +18,9 @@ int main(int argc, char *argv[])
 #else
     const auto uri = "org.nubecula.harbour.porthole";
 #endif
+
+    qmlRegisterType<CounterModel>(uri, 1, 0, "CounterModel");
+    qmlRegisterType<SortModel>(uri, 1, 0, "SortModel");
 
     qmlRegisterSingletonType<Porthole>(uri,
                                               1,

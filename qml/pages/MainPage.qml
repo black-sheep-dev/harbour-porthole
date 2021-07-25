@@ -20,6 +20,11 @@ Page {
             }
 
             MenuItem {
+                text: qsTr("Analysis")
+                onClicked: pageStack.animatorPush(Qt.resolvedUrl("AnalysisPage.qml"))
+            }
+
+            MenuItem {
                 text: qsTr("Refresh")
                 onClicked: refresh()
             }
@@ -47,41 +52,52 @@ Page {
             }
 
             SectionHeader {
-                text: qsTr("Today Statistics")
-            }
-
-            DetailItem {
-                id: totalQueries
-                label: qsTr("Total Queries")
-            }
-
-            DetailItem {
-                id: blockedQueries
-                label: qsTr("Queries Blocked")
-            }
-
-            DetailItem {
-                id: domainsOnBlocklist
-                label: qsTr("Domains on Blocklist")
-            }
-
-            SectionHeader {
                 text: qsTr("Percent Blocked")
             }
 
             ProgressCircle {
                 id: blockedPercent
                 anchors.horizontalCenter:  parent.horizontalCenter
-                width: Math.min(page.width, page.height) * 0.4
+                width: Math.min(page.width, page.height) * 0.3
 
                 height: width
                 borderWidth: Theme.fontSizeMedium
+                progressValue: Porthole.summary.ads_percentage_today / 100
 
                 Label {
                     id: percentLabel
                     anchors.centerIn: parent
+                    text: Number(Porthole.summary.ads_percentage_today).toLocaleString(Qt.locale()) + " %"
                 }
             }
+
+            SectionHeader {
+                text: qsTr("Today Statistics")
+            }
+
+            DetailItem {
+                id: totalClients
+                label: qsTr("Total Clients")
+                value: Porthole.summary.unique_clients
+            }
+
+            DetailItem {
+                id: totalQueries
+                label: qsTr("Total Queries")
+                value: Porthole.summary.dns_queries_today
+            }
+
+            DetailItem {
+                id: blockedQueries
+                label: qsTr("Queries Blocked")
+                value: Porthole.summary.ads_blocked_today
+            }
+
+            DetailItem {
+                id: domainsOnBlocklist
+                label: qsTr("Domains on Blocklist")
+                value: Porthole.summary.domains_being_blocked
+            }           
         }
     }
 
@@ -104,19 +120,6 @@ Page {
 
     Connections {
         target: Porthole
-        onRequestFinished: {
-           if (query === "enable" || query === "disable") enabled = (data.status === "enabled")
-
-           if (query === "summaryRaw") {
-               enabled = (data.status === "enabled")
-
-               totalQueries.value = data.dns_queries_today
-               blockedQueries.value = data.ads_blocked_today
-               domainsOnBlocklist.value = data.domains_being_blocked
-
-               blockedPercent.progressValue = data.ads_percentage_today / 100
-               percentLabel.text = Number(data.ads_percentage_today).toLocaleString(Qt.locale()) + " %"
-           }
-        }
+        onRequestFinished: if (query === "enable" || query === "disable" || query === "summaryRaw") enabled = (data.status === "enabled")
     }
 }

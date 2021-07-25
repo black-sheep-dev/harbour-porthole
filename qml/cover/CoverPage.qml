@@ -47,6 +47,7 @@ CoverBackground {
             id: totalQueries
             x: Theme.horizontalPageMargin
             font.pixelSize: Theme.fontSizeExtraSmall
+            text: Porthole.summary.dns_queries_today
         }
         Label {
             text: qsTr("Queries Blocked")
@@ -58,6 +59,7 @@ CoverBackground {
             id: blockedQueries
             x: Theme.horizontalPageMargin
             font.pixelSize: Theme.fontSizeExtraSmall
+            text: Porthole.summary.ads_blocked_today
         }
         Label {
             text: qsTr("Percent Blocked")
@@ -69,7 +71,7 @@ CoverBackground {
             id: blockedPercent
             x: Theme.horizontalPageMargin
             font.pixelSize: Theme.fontSizeExtraSmall
-
+            text: Number(Porthole.summary.ads_percentage_today).toLocaleString(Qt.locale()) + " %"
         }
     }
 
@@ -91,18 +93,8 @@ CoverBackground {
         Porthole.sendRequest("summaryRaw")
     }
 
-    Component.onCompleted: refresh()
-
     Connections {
         target: Porthole
-        onRequestFinished: {
-            if (query === "status" || query === "enable" || query === "disable" || query === "summaryRaw") enabled = (data.status === "enabled")
-
-            if (query === "summaryRaw") {
-                totalQueries.text = data.dns_queries_today
-                blockedQueries.text = data.ads_blocked_today
-                blockedPercent.text = Number(data.ads_percentage_today).toLocaleString(Qt.locale()) + " %"
-            }
-        }
+        onRequestFinished: if (query === "status" || query === "enable" || query === "disable" || query === "summaryRaw") enabled = (data.status === "enabled")
     }
 }

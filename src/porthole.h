@@ -3,6 +3,7 @@
 
 #include <QObject>
 
+#include <QJsonObject>
 #include <QNetworkAccessManager>
 
 #include <Sailfish/Secrets/secretmanager.h>
@@ -14,6 +15,7 @@ class Porthole : public QObject
     Q_OBJECT
 
     Q_PROPERTY(QString accessToken READ accessToken WRITE setAccessToken NOTIFY accessTokenChanged)
+    Q_PROPERTY(QJsonObject summary READ summary WRITE setSummary NOTIFY summaryChanged)
     Q_PROPERTY(QString url READ url WRITE setUrl NOTIFY urlChanged)
 
 public:
@@ -26,6 +28,7 @@ public:
 
     // properties
     QString accessToken() const;
+    QJsonObject summary() const;
     QString url() const;
 
 signals:
@@ -34,6 +37,7 @@ signals:
 
     // properties
     void accessTokenChanged(const QString &token);
+    void summaryChanged(const QJsonObject &summary);
     void urlChanged(const QString &url);
 
 public slots:
@@ -41,6 +45,7 @@ public slots:
 
     // properties
     void setAccessToken(const QString &token);
+    void setSummary(const QJsonObject &summary);
     void setUrl(const QString &url);
 
 private slots:
@@ -63,7 +68,9 @@ private:
 
     // properties
     QString m_accessToken;
+    QJsonObject m_summary;
     QString m_url;
+
 };
 
 #endif // PORTHOLE_H

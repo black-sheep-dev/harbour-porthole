@@ -10,7 +10,7 @@
 #   - translation filenames have to be changed
 
 # VERSION
-VERSION = 0.1.0
+VERSION = 0.1.1
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 # The name of your application
@@ -28,11 +28,15 @@ PKGCONFIG += sailfishsecrets
 LIBS += -lz
 
 SOURCES += src/harbour-porthole.cpp \
+    src/models/countermodel.cpp \
+    src/models/sortmodel.cpp \
     src/porthole.cpp \
     src/tools/compress.cpp
 
 DISTFILES += qml/harbour-porthole.qml \
     qml/cover/CoverPage.qml \
+    qml/pages/AnalysisPage.qml \
+    qml/pages/CounterListPage.qml \
     qml/pages/MainPage.qml \
     qml/pages/SettingsConnectionPage.qml \
     qml/pages/SettingsPage.qml \
@@ -60,5 +64,7 @@ RESOURCES += \
     ressources.qrc
 
 HEADERS += \
+    src/models/countermodel.h \
+    src/models/sortmodel.h \
     src/porthole.h \
     src/tools/compress.h
