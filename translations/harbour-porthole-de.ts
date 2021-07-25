@@ -152,12 +152,12 @@
         <translation>Über</translation>
     </message>
     <message>
-        <source>Infos about Quartermaster</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Settings</source>
         <translation>Einstellungen</translation>
+    </message>
+    <message>
+        <source>Infos about Porthole</source>
+        <translation>Infos über Porthole</translation>
     </message>
 </context>
 <context>

@@ -17,7 +17,7 @@ Page {
             }
             ListElement {
                 title: qsTr("About");
-                description: qsTr("Infos about Quartermaster")
+                description: qsTr("Infos about Porthole")
                 icon: "image://theme/icon-m-developer-mode"
                 page: "AboutPage.qml"
             }

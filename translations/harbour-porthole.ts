@@ -152,11 +152,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Infos about Quartermaster</source>
+        <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Settings</source>
+        <source>Infos about Porthole</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
