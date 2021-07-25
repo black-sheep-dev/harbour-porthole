@@ -60,6 +60,7 @@ void Porthole::reset()
 void Porthole::saveSettings()
 {
     writeSettings();
+    storeCredentials();
 }
 
 QString Porthole::accessToken() const

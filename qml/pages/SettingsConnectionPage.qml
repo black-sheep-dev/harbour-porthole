@@ -11,6 +11,7 @@ Page {
     function applyChanges() {
         if (urlField.acceptableInput) Porthole.url = urlField.text
         if (tokenField.text.length > 0) Porthole.accessToken = tokenField.text
+        Porthole.saveSettings()
     }
 
     RemorsePopup { id: remorse }
