@@ -5,6 +5,7 @@
 
 #include "porthole.h"
 #include "models/countermodel.h"
+#include "models/filterlistmodel.h"
 #include "models/sortmodel.h"
 
 int main(int argc, char *argv[])
@@ -20,6 +21,7 @@ int main(int argc, char *argv[])
 #endif
 
     qmlRegisterType<CounterModel>(uri, 1, 0, "CounterModel");
+    qmlRegisterType<FilterListModel>(uri, 1, 0, "FilterListModel");
     qmlRegisterType<SortModel>(uri, 1, 0, "SortModel");
 
     qmlRegisterSingletonType<Porthole>(uri,

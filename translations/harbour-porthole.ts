@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="en">
 <context>
     <name>AboutPage</name>
     <message>
@@ -88,6 +88,17 @@
     </message>
 </context>
 <context>
+    <name>CounterListPage</name>
+    <message numerus="yes">
+        <source>%n Request(s)</source>
+        <comment>0</comment>
+        <translation type="unfinished">
+            <numerusform>%n Request</numerusform>
+            <numerusform>%n Requests</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
         <source>Total Queries</source>
@@ -99,6 +110,57 @@
     </message>
     <message>
         <source>Percent Blocked</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>EditFilterDialog</name>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Domain</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RegEx filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter domain</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter regular expression</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Regular Expression</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add domain as wildcard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Activate this to involve all subdomains</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter description (optional)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Comment</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -185,15 +247,58 @@
     </message>
 </context>
 <context>
+    <name>SettingsFiltersPage</name>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Whitelist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Blacklist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No filters available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pull down to add one</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hide Search</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to delete filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to add filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SettingsPage</name>
-    <message>
-        <source>Connections</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Manage connections settings</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>About</source>
         <translation type="unfinished"></translation>
@@ -205,6 +310,101 @@
     <message>
         <source>Infos about Porthole</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Server Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show server info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Whitelist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage domains on whitelist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Blacklist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manage domains on blacklist</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsServerInfoPage</name>
+    <message>
+        <source>Server Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Core</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Web</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FTL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Software Versions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gravity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Last update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File exists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timespan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <comment>0</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <comment>0</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <comment>0</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -320,6 +520,41 @@
     </message>
     <message>
         <source>Search for entry WEBPASSWORD.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>harbour-porthole</name>
+    <message>
+        <source>Connection refused</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Host not found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connection timed out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ssl handshake failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Access denied</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Internal server error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unkown connection error</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

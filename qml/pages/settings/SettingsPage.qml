@@ -10,16 +10,32 @@ Page {
         id: listView
         model: ListModel {
             ListElement {
-                title: qsTr("Connections");
-                description: qsTr("Manage connections settings")
-                icon: "image://theme/icon-m-mobile-network"
-                page: "SettingsConnectionPage.qml"
+                title: qsTr("Whitelist");
+                description: qsTr("Manage domains on whitelist")
+                icon: "image://theme/icon-m-browser-permissions"
+                page: "SettingsFiltersPage.qml"
+                type: 1
+            }
+            ListElement {
+                title: qsTr("Blacklist");
+                description: qsTr("Manage domains on blacklist")
+                icon: "image://theme/icon-m-vpn"
+                page: "SettingsFiltersPage.qml"
+                type: 2
+            }
+            ListElement {
+                title: qsTr("Server Info");
+                description: qsTr("Show server info")
+                icon: "image://theme/icon-m-about"
+                page: "SettingsServerInfoPage.qml"
+                type: 0
             }
             ListElement {
                 title: qsTr("About");
                 description: qsTr("Infos about Porthole")
-                icon: "image://theme/icon-m-developer-mode"
-                page: "AboutPage.qml"
+                icon: "image://theme/icon-m-about"
+                page: "../AboutPage.qml"
+                type: 0
             }
         }
 
@@ -38,6 +54,7 @@ Page {
                 width: parent.width - 2 * x
                 height: parent.height
                 anchors.verticalCenter: parent.verticalCenter
+                spacing: Theme.paddingMedium
 
                 Image {
                     id: itemIcon
@@ -45,14 +62,9 @@ Page {
                     anchors.verticalCenter: parent.verticalCenter
                 }
 
-                Item {
-                    width:Theme.paddingMedium
-                    height:1
-                }
-
                 Column {
                     id: data
-                    width: parent.width - itemIcon.width
+                    width: parent.width - itemIcon.width - parent.spacing
                     anchors.verticalCenter: itemIcon.verticalCenter
                     Label {
                         id: text
@@ -69,7 +81,7 @@ Page {
                 }
             }
 
-            onClicked: pageStack.push(Qt.resolvedUrl(page))
+            onClicked: pageStack.push(Qt.resolvedUrl(page), type > 0 ? {type: type} : {})
         }
 
         VerticalScrollDecorator {}

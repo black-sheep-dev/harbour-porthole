@@ -17,10 +17,15 @@ URL:        https://github.com/black-sheep-dev/harbour-porthole
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-porthole.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
+Requires:   sailfishsecretsdaemon-secretsplugins-default
+Requires:   nemo-qml-plugin-dbus-qt5
+Requires:   nemo-qml-plugin-notifications-qt5
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
+BuildRequires:  pkgconfig(nemonotifications-qt5)
+BuildRequires:  pkgconfig(sailfishsecrets)
 BuildRequires:  desktop-file-utils
 
 %description

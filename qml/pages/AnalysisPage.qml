@@ -54,6 +54,7 @@ Page {
                 width: parent.width - 2 * x
                 height: parent.height
                 anchors.verticalCenter: parent.verticalCenter
+                spacing: Theme.paddingMedium
 
                 Image {
                     id: itemIcon
@@ -61,14 +62,9 @@ Page {
                     anchors.verticalCenter: parent.verticalCenter
                 }
 
-                Item {
-                    width:Theme.paddingMedium
-                    height:1
-                }
-
                 Column {
                     id: data
-                    width: parent.width - itemIcon.width
+                    width: parent.width - itemIcon.width - parent.spacing
                     anchors.verticalCenter: itemIcon.verticalCenter
                     Label {
                         id: text
