@@ -88,6 +88,17 @@
     </message>
 </context>
 <context>
+    <name>CounterListPage</name>
+    <message numerus="yes">
+        <source>%n Request(s)</source>
+        <comment>0</comment>
+        <translation>
+            <numerusform>%n Anfrage</numerusform>
+            <numerusform>%n Anfragen</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
         <source>Total Queries</source>
@@ -100,6 +111,57 @@
     <message>
         <source>Percent Blocked</source>
         <translation>Prozent geblockt</translation>
+    </message>
+</context>
+<context>
+    <name>EditFilterDialog</name>
+    <message>
+        <source>Save</source>
+        <translation>Speichern</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation>Hinzufügen</translation>
+    </message>
+    <message>
+        <source>Filter</source>
+        <translation>Filter</translation>
+    </message>
+    <message>
+        <source>Domain</source>
+        <translation>Domain</translation>
+    </message>
+    <message>
+        <source>RegEx filter</source>
+        <translation>RegEx Filter</translation>
+    </message>
+    <message>
+        <source>Enter domain</source>
+        <translation>Domain eingeben</translation>
+    </message>
+    <message>
+        <source>Enter regular expression</source>
+        <translation>Regulären Ausdruck eingeben</translation>
+    </message>
+    <message>
+        <source>Regular Expression</source>
+        <translation>Regulärer Ausdruck</translation>
+    </message>
+    <message>
+        <source>Add domain as wildcard</source>
+        <translation>Domain mit Wildcard hinzufügen</translation>
+    </message>
+    <message>
+        <source>Activate this to involve all subdomains</source>
+        <translation>Wenn aktiviert werden alle Subdomains mit einbezogen</translation>
+    </message>
+    <message>
+        <source>Enter description (optional)</source>
+        <translation>Beschreibung eingeben</translation>
+    </message>
+    <message>
+        <source>Comment</source>
+        <translation>Kommentar</translation>
     </message>
 </context>
 <context>
@@ -185,15 +247,58 @@
     </message>
 </context>
 <context>
+    <name>SettingsFiltersPage</name>
+    <message>
+        <source>Refresh</source>
+        <translation>Aktualisieren</translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation>Suchen</translation>
+    </message>
+    <message>
+        <source>Whitelist</source>
+        <translation>Whitelist</translation>
+    </message>
+    <message>
+        <source>Blacklist</source>
+        <translation>Blacklist</translation>
+    </message>
+    <message>
+        <source>No filters available</source>
+        <translation>Keine Filter verfügbar</translation>
+    </message>
+    <message>
+        <source>Pull down to add one</source>
+        <translation>Nach unten ziehen um welche hinzuzufügen</translation>
+    </message>
+    <message>
+        <source>Hide Search</source>
+        <translation>Suche ausblenden</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Löschen</translation>
+    </message>
+    <message>
+        <source>Delete filter</source>
+        <translation>Lösche Filter</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation>Hinzufügen</translation>
+    </message>
+    <message>
+        <source>Failed to delete filter</source>
+        <translation>Löschen des Filters fehlgeschlagen</translation>
+    </message>
+    <message>
+        <source>Failed to add filter</source>
+        <translation>Hinzufügen des Filters fehlgeschlagen</translation>
+    </message>
+</context>
+<context>
     <name>SettingsPage</name>
-    <message>
-        <source>Connections</source>
-        <translation>Verbindungen</translation>
-    </message>
-    <message>
-        <source>Manage connections settings</source>
-        <translation>Verbindungs Einstellungen verwalten</translation>
-    </message>
     <message>
         <source>About</source>
         <translation>Über</translation>
@@ -205,6 +310,101 @@
     <message>
         <source>Infos about Porthole</source>
         <translation>Infos über Porthole</translation>
+    </message>
+    <message>
+        <source>Server Info</source>
+        <translation>Server Informationen</translation>
+    </message>
+    <message>
+        <source>Show server info</source>
+        <translation>Zeige Server Infos an</translation>
+    </message>
+    <message>
+        <source>Whitelist</source>
+        <translation>Whitelist</translation>
+    </message>
+    <message>
+        <source>Manage domains on whitelist</source>
+        <translation>Verwalte Domains auf der Whitelist</translation>
+    </message>
+    <message>
+        <source>Blacklist</source>
+        <translation>Blacklist</translation>
+    </message>
+    <message>
+        <source>Manage domains on blacklist</source>
+        <translation>Verwalte Domains auf der Blacklist</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsServerInfoPage</name>
+    <message>
+        <source>Server Info</source>
+        <translation>Server Infos</translation>
+    </message>
+    <message>
+        <source>Core</source>
+        <translation>Core</translation>
+    </message>
+    <message>
+        <source>Web</source>
+        <translation>Web</translation>
+    </message>
+    <message>
+        <source>FTL</source>
+        <translation>FTL</translation>
+    </message>
+    <message>
+        <source>Software Versions</source>
+        <translation>Software Versionen</translation>
+    </message>
+    <message>
+        <source>Gravity</source>
+        <translation>Gravity</translation>
+    </message>
+    <message>
+        <source>Last update</source>
+        <translation>Letztes Update</translation>
+    </message>
+    <message>
+        <source>File exists</source>
+        <translation>Datei vorhanden</translation>
+    </message>
+    <message>
+        <source>yes</source>
+        <translation>ja</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>nein</translation>
+    </message>
+    <message>
+        <source>Timespan</source>
+        <translation>Zeitspanne</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <comment>0</comment>
+        <translation>
+            <numerusform>%n Tag</numerusform>
+            <numerusform>%n Tage</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <comment>0</comment>
+        <translation>
+            <numerusform>%n Stunde</numerusform>
+            <numerusform>%n Stunden</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <comment>0</comment>
+        <translation>
+            <numerusform>%n Minute</numerusform>
+            <numerusform>%n Minuten</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -321,6 +521,41 @@
     <message>
         <source>Search for entry WEBPASSWORD.</source>
         <translation>Suche nach dem Eintrag WEBPASSWORD.</translation>
+    </message>
+</context>
+<context>
+    <name>harbour-porthole</name>
+    <message>
+        <source>Connection refused</source>
+        <translation>Verbindung abgelehnt</translation>
+    </message>
+    <message>
+        <source>Host not found</source>
+        <translation>Host nicht gefunden</translation>
+    </message>
+    <message>
+        <source>Connection timed out</source>
+        <translation>Zeitüberschreitung der Verbindung</translation>
+    </message>
+    <message>
+        <source>Ssl handshake failed</source>
+        <translation>SSL-Handshake fehlgeschlagen</translation>
+    </message>
+    <message>
+        <source>Access denied</source>
+        <translation>Zugriff abgelehnt</translation>
+    </message>
+    <message>
+        <source>Not found</source>
+        <translation>Nicht gefunden</translation>
+    </message>
+    <message>
+        <source>Internal server error</source>
+        <translation>Interner Server Fehler</translation>
+    </message>
+    <message>
+        <source>Unkown connection error</source>
+        <translation>Unbekannter Verbindungsfehler</translation>
     </message>
 </context>
 </TS>

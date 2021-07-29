@@ -17,6 +17,7 @@ class Porthole : public QObject
     Q_PROPERTY(QString accessToken READ accessToken WRITE setAccessToken NOTIFY accessTokenChanged)
     Q_PROPERTY(QJsonObject summary READ summary WRITE setSummary NOTIFY summaryChanged)
     Q_PROPERTY(QString url READ url WRITE setUrl NOTIFY urlChanged)
+    Q_PROPERTY(QJsonObject versions READ versions WRITE setVersions NOTIFY versionsChanged)
 
 public:
     explicit Porthole(QObject *parent = nullptr);
@@ -30,23 +31,27 @@ public:
     QString accessToken() const;
     QJsonObject summary() const;
     QString url() const;
+    QJsonObject versions() const;
 
 signals:
-    void requestFailed(const QString &query);
-    void requestFinished(const QString &query, const QJsonObject &data);
+    void requestFailed(const QString &query, int error, const QVariant &info = QVariant());
+    void requestFinished(const QString &query, const QJsonObject &data, const QVariant &info = QVariant());
 
     // properties
     void accessTokenChanged(const QString &token);
     void summaryChanged(const QJsonObject &summary);
-    void urlChanged(const QString &url);
+    void urlChanged(const QString &url);   
+    void versionsChanged(const QJsonObject &versions);
 
 public slots:
-    void sendRequest(const QString &query, bool auth = false);
+    void sendRequest(const QString &query, bool auth = false, const QVariant &info = QVariant());
+    void sendPostRequest(const QString &query, const QJsonObject &data = QJsonObject(), const QVariant &info = QVariant());
 
     // properties
     void setAccessToken(const QString &token);
     void setSummary(const QJsonObject &summary);
-    void setUrl(const QString &url);
+    void setUrl(const QString &url);   
+    void setVersions(const QJsonObject &versions);
 
 private slots:
     void onRequestFinished(QNetworkReply *reply);
@@ -70,7 +75,7 @@ private:
     QString m_accessToken;
     QJsonObject m_summary;
     QString m_url;
-
+    QJsonObject m_versions;
 };
 
 #endif // PORTHOLE_H

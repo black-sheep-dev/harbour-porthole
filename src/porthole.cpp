@@ -9,6 +9,7 @@
 #include <QNetworkReply>
 #include <QNetworkRequest>
 #include <QSettings>
+#include <QUrlQuery>
 
 #include <Sailfish/Secrets/createcollectionrequest.h>
 #include <Sailfish/Secrets/deletecollectionrequest.h>
@@ -45,7 +46,8 @@ Porthole::~Porthole()
 
 void Porthole::initialize()
 {
-
+    if (!m_url.isEmpty())
+        sendRequest("versions");
 }
 
 void Porthole::reset()
@@ -77,8 +79,18 @@ QString Porthole::url() const
     return m_url;
 }
 
-void Porthole::sendRequest(const QString &query, bool auth)
+QJsonObject Porthole::versions() const
 {
+    return m_versions;
+}
+
+void Porthole::sendRequest(const QString &query, bool auth, const QVariant &info)
+{
+#ifdef QT_DEBUG
+    qDebug() << "API REQUEST";
+    qDebug() << query;
+#endif
+
     if (query.isEmpty())
         return;
 
@@ -95,6 +107,42 @@ void Porthole::sendRequest(const QString &query, bool auth)
 
     auto reply = m_manager->get(request);
     reply->setProperty("query", query);
+    reply->setProperty("info", info);
+}
+
+void Porthole::sendPostRequest(const QString &query, const QJsonObject &data, const QVariant &info)
+{
+#ifdef QT_DEBUG
+    qDebug() << "API POST REQUEST";
+    qDebug() << query;
+#endif
+
+    if (query.isEmpty())
+        return;
+
+    QString url = m_url + QStringLiteral("/admin/api.php?") + query;
+
+    url += QStringLiteral("&auth=") + m_accessToken;
+
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
+    request.setRawHeader("Accept", "application/json");
+    request.setRawHeader("Connection", "keep-alive");
+    request.setRawHeader("Accept-Encoding", "gzip");
+    request.setSslConfiguration(QSslConfiguration::defaultConfiguration());
+
+    QUrlQuery postData;
+    for (const auto &key : data.keys()) {
+        postData.addQueryItem(key, data.value(key).toString());
+    }
+
+#ifdef QT_DEBUG
+    qDebug() << postData.toString(QUrl::FullyEncoded);
+#endif
+
+    auto reply = m_manager->post(request, postData.toString(QUrl::FullyEncoded).toUtf8());
+    reply->setProperty("query", query);
+    reply->setProperty("info", info);
 }
 
 void Porthole::setAccessToken(const QString &token)
@@ -124,6 +172,15 @@ void Porthole::setUrl(const QString &url)
     emit urlChanged(m_url);
 }
 
+void Porthole::setVersions(const QJsonObject &versions)
+{
+    if (m_versions == versions)
+        return;
+
+    m_versions = versions;
+    emit versionsChanged(m_versions);
+}
+
 void Porthole::onRequestFinished(QNetworkReply *reply)
 {
 #ifdef QT_DEBUG
@@ -131,13 +188,15 @@ void Porthole::onRequestFinished(QNetworkReply *reply)
 #endif
 
     const QString query = reply->property("query").toString();
+    const QVariant info = reply->property("info");
+    const int error = reply->error();
 
     // handel errors
-    if (reply->error()) {
+    if (error) {
 #ifdef QT_DEBUG
         qDebug() << reply->errorString();
 #endif
-        emit requestFailed(query);
+        emit requestFailed(query, error, info);
 
         reply->deleteLater();
         return;
@@ -157,22 +216,26 @@ void Porthole::onRequestFinished(QNetworkReply *reply)
 #endif
 
     // parse response
-    QJsonParseError error{};
+    QJsonParseError err{};
 
-    const QJsonObject obj = QJsonDocument::fromJson(data, &error).object();
+    const QJsonObject obj = QJsonDocument::fromJson(data, &err).object();
 
-    if (error.error) {
+    if (err.error) {
 #ifdef QT_DEBUG
         qDebug() << "JSON PARSE ERROR";
-        qDebug() << error.errorString();
+        qDebug() << err.errorString();
 #endif
+        emit requestFailed(query, error, info);
         return;
     }
 
-    if (query == QLatin1String("summaryRaw"))
+    if (query == QLatin1String("summaryRaw")) {
         setSummary(obj);
+    } else if (query == QLatin1String("versions")) {
+        setVersions(obj);
+    }
 
-    emit requestFinished(query, obj);
+    emit requestFinished(query, obj, info);
 }
 
 void Porthole::createCollection()

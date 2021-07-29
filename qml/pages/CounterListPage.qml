@@ -46,12 +46,18 @@ Page {
                         id: text
                         width: parent.width
                         wrapMode: Text.WrapAnywhere
-                        text: model.name
+                        text: {
+                            if (type === 2 || type === 3) {
+                                model.name.split("|")[0]
+                            } else {
+                                return model.name
+                            }
+                        }
                         color: pressed ? Theme.secondaryHighlightColor:Theme.highlightColor
                         font.pixelSize: Theme.fontSizeMedium
                     }
                     Label {
-                        text: model.count
+                        text: qsTr("%n Request(s)", "0", model.count)
                         color: Theme.secondaryColor
                         font.pixelSize: Theme.fontSizeSmall
                     }

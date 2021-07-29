@@ -16,7 +16,7 @@ Page {
         PullDownMenu {
             MenuItem {
                 text: qsTr("Settings")
-                onClicked: pageStack.animatorPush(Qt.resolvedUrl("SettingsPage.qml"))
+                onClicked: pageStack.animatorPush(Qt.resolvedUrl("settings/SettingsPage.qml"))
             }
 
             MenuItem {

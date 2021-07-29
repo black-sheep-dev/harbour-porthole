@@ -10,7 +10,7 @@
 #   - translation filenames have to be changed
 
 # VERSION
-VERSION = 0.1.1
+VERSION = 0.1.2
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 # The name of your application
@@ -23,23 +23,27 @@ DEFINES += APP_TARGET=\\\"$$TARGET\\\"
 QT += dbus
 
 CONFIG += link_pkgconfig sailfishapp
-PKGCONFIG += sailfishsecrets
+PKGCONFIG += sailfishsecrets nemonotifications-qt5
 
 LIBS += -lz
 
 SOURCES += src/harbour-porthole.cpp \
     src/models/countermodel.cpp \
+    src/models/filterlistmodel.cpp \
     src/models/sortmodel.cpp \
     src/porthole.cpp \
     src/tools/compress.cpp
 
 DISTFILES += qml/harbour-porthole.qml \
     qml/cover/CoverPage.qml \
+    qml/dialogs/EditFilterDialog.qml \
     qml/pages/AnalysisPage.qml \
     qml/pages/CounterListPage.qml \
     qml/pages/MainPage.qml \
     qml/pages/SettingsConnectionPage.qml \
     qml/pages/SettingsPage.qml \
+    qml/pages/settings/SettingsFiltersPage.qml \
+    qml/pages/settings/SettingsServerInfoPage.qml \
     qml/pages/wizard/WizardConnectionPage.qml \
     rpm/harbour-porthole.changes \
     rpm/harbour-porthole.changes.run.in \
@@ -65,6 +69,7 @@ RESOURCES += \
 
 HEADERS += \
     src/models/countermodel.h \
+    src/models/filterlistmodel.h \
     src/models/sortmodel.h \
     src/porthole.h \
     src/tools/compress.h
