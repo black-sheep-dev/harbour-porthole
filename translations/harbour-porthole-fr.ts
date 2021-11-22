@@ -5,39 +5,39 @@
     <name>AboutPage</name>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>À propos</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation>Traductions</translation>
     </message>
     <message>
         <source>Your language is not available? You are welcome to support this project by translating it on my self hosted Weblate server.</source>
-        <translation type="unfinished"></translation>
+        <translation>Votre langue n&apos;est pas disponible&#xa0;? Votre aide est la bienvenue pour traduire ce projet sur mon serveur Weblate dédié.</translation>
     </message>
     <message>
         <source>Sources</source>
-        <translation type="unfinished"></translation>
+        <translation>Sources</translation>
     </message>
     <message>
         <source>Give star</source>
-        <translation type="unfinished"></translation>
+        <translation>Donner une étoile</translation>
     </message>
     <message>
         <source>Donations</source>
-        <translation type="unfinished"></translation>
+        <translation>Dons</translation>
     </message>
     <message>
         <source>If you like my work why not buy me a beer?</source>
-        <translation type="unfinished"></translation>
+        <translation>Si vous appréciez mon travail pourquoi ne pas m&apos;offrir une bière&#xa0;?</translation>
     </message>
     <message>
         <source>Donate with PayPal</source>
-        <translation type="unfinished"></translation>
+        <translation>Donner par PayPal</translation>
     </message>
     <message>
         <source>Donate with Liberpay</source>
-        <translation type="unfinished"></translation>
+        <translation>Donner par Liberpay</translation>
     </message>
     <message>
         <source>Porthole</source>
@@ -117,11 +117,11 @@
     <name>EditFilterDialog</name>
     <message>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrer</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajouter</translation>
     </message>
     <message>
         <source>Filter</source>
@@ -161,14 +161,14 @@
     </message>
     <message>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Commentaires</translation>
     </message>
 </context>
 <context>
     <name>MainPage</name>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>Rafraîchir</translation>
     </message>
     <message>
         <source>Dashboard</source>
@@ -204,7 +204,7 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Paramètres</translation>
     </message>
     <message>
         <source>Total Clients</source>
@@ -231,30 +231,30 @@
     </message>
     <message>
         <source>Access Token</source>
-        <translation type="unfinished"></translation>
+        <translation>Jeton d&apos;accès</translation>
     </message>
     <message>
         <source>Enter access token</source>
-        <translation type="unfinished"></translation>
+        <translation>Entrer le jeton d&apos;accès</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Réinitialiser</translation>
     </message>
     <message>
         <source>Reset application</source>
-        <translation type="unfinished"></translation>
+        <translation>Réinitialisation de l&apos;application</translation>
     </message>
 </context>
 <context>
     <name>SettingsFiltersPage</name>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>Rafraîchir</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechercher</translation>
     </message>
     <message>
         <source>Whitelist</source>
@@ -266,7 +266,7 @@
     </message>
     <message>
         <source>No filters available</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucun fichier disponible</translation>
     </message>
     <message>
         <source>Pull down to add one</source>
@@ -278,7 +278,7 @@
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Supprimer</translation>
     </message>
     <message>
         <source>Delete filter</source>
@@ -286,7 +286,7 @@
     </message>
     <message>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajouter</translation>
     </message>
     <message>
         <source>Failed to delete filter</source>
@@ -301,11 +301,11 @@
     <name>SettingsPage</name>
     <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>À propos</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Paramètres</translation>
     </message>
     <message>
         <source>Infos about Porthole</source>
@@ -411,11 +411,11 @@
     <name>WizardConnectionPage</name>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>Continuer</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Retour</translation>
     </message>
     <message>
         <source>Connection Settings</source>
@@ -450,22 +450,22 @@
     <name>WizardFinalPage</name>
     <message>
         <source>Complete</source>
-        <translation type="unfinished"></translation>
+        <translation>Complété</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Retour</translation>
     </message>
     <message>
         <source>Setup process completed</source>
-        <translation type="unfinished"></translation>
+        <translation>Processus de configuration terminé</translation>
     </message>
 </context>
 <context>
     <name>WizardIntroPage</name>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>Continuer</translation>
     </message>
     <message>
         <source>Welcome to Porthole</source>
@@ -473,42 +473,42 @@
     </message>
     <message>
         <source>This app is not configured yet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cette application n&apos;est pas encore configurée.</translation>
     </message>
     <message>
         <source>The setup wizard will guide you through the configuration process.</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;assistant de configuration vous guidera tout au long du processus de configuration.</translation>
     </message>
     <message>
         <source>If there are errors during the setup process, you can try to reset the data from a previous installation.</source>
-        <translation type="unfinished"></translation>
+        <translation>S&apos;il y a des erreurs pendant le processus d&apos;installation, vous pouvez essayer de réinitialiser les données d&apos;une installation précédente.</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Réinitialiser</translation>
     </message>
     <message>
         <source>Resetting application</source>
-        <translation type="unfinished"></translation>
+        <translation>Réinitialisation de l&apos;application</translation>
     </message>
 </context>
 <context>
     <name>WizardTokenPage</name>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>Continuer</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Retour</translation>
     </message>
     <message>
         <source>Access Token</source>
-        <translation type="unfinished"></translation>
+        <translation>Jeton d&apos;accès</translation>
     </message>
     <message>
         <source>Enter access token</source>
-        <translation type="unfinished"></translation>
+        <translation>Entrer le jeton d&apos;accès</translation>
     </message>
     <message>
         <source>You need to provide an access token to connect to Pi-hole server.</source>
