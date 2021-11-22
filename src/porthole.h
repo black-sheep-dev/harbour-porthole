@@ -28,10 +28,10 @@ public:
     Q_INVOKABLE void saveSettings();
 
     // properties
-    QString accessToken() const;
-    QJsonObject summary() const;
-    QString url() const;
-    QJsonObject versions() const;
+    const QString &accessToken() const;
+    const QJsonObject &summary() const;
+    const QString &url() const;
+    const QJsonObject &versions() const;
 
 signals:
     void requestFailed(const QString &query, int error, const QVariant &info = QVariant());

@@ -66,22 +66,22 @@ void Porthole::saveSettings()
     storeCredentials();
 }
 
-QString Porthole::accessToken() const
+const QString &Porthole::accessToken() const
 {
     return m_accessToken;
 }
 
-QJsonObject Porthole::summary() const
+const QJsonObject &Porthole::summary() const
 {
     return m_summary;
 }
 
-QString Porthole::url() const
+const QString &Porthole::url() const
 {
     return m_url;
 }
 
-QJsonObject Porthole::versions() const
+const QJsonObject &Porthole::versions() const
 {
     return m_versions;
 }
