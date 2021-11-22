@@ -4,11 +4,13 @@
 #include <QDebug>
 #endif
 
+#include <QFile>
 #include <QJsonDocument>
 #include <QJsonParseError>
 #include <QNetworkReply>
 #include <QNetworkRequest>
 #include <QSettings>
+#include <QStandardPaths>
 #include <QUrlQuery>
 
 #include <Sailfish/Secrets/createcollectionrequest.h>
@@ -365,7 +367,13 @@ void Porthole::storeCredentials()
 
 void Porthole::readSettings()
 {
-    QSettings settings;
+    QString path = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/org.nubecula/Porthole/porthole.conf";
+
+    if (!QFile(path).exists()) {
+           path = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-porthole/harbour-porthole.conf";
+    }
+
+    QSettings settings(path, QSettings::NativeFormat);
 
     settings.beginGroup(QStringLiteral("APP"));
     setUrl(settings.value(QStringLiteral("url")).toString());
@@ -378,7 +386,7 @@ void Porthole::readSettings()
 
 void Porthole::writeSettings()
 {
-    QSettings settings;
+    QSettings settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/org.nubecula/Porthole/porthole.conf", QSettings::NativeFormat);
 
     settings.beginGroup(QStringLiteral("APP"));
     settings.setValue(QStringLiteral("url"), m_url);

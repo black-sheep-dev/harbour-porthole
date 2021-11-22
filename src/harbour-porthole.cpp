@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
         Q_UNUSED(engine)
         Q_UNUSED(scriptEngine)
 
-        auto app = new Porthole();
+        auto app = new Porthole(nullptr);
 
         return app;
     });
