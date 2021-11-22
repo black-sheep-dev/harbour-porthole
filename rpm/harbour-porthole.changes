@@ -1,4 +1,8 @@
-* Sun Jul 25 2021 Samuel Kron <blacksheep@nubecula.org> 0.1.1-1
+* Mon Nov 22 2021 Samuel Kron <blacksheep@nubecula.org> 0.1.3-1
+- Migrate settings to new Jolla requirements
+- New translations (Polish / French)
+
+* Sun Jul 25 2021 Samuel Kron <blacksheep@nubecula.org> 0.1.2-1
 - Add Black- / Whitelist management
 - Add Server info
 - In app notifications
