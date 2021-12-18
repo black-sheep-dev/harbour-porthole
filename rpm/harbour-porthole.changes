@@ -1,3 +1,9 @@
+* Sat Dec 18 2021 Samuel Kron <blacksheep@nubecula.org> 0.2.0-1
+- SailJail support
+- Switch to id based translation
+- Added more translations
+- Bugfixes / Improvements
+
 * Mon Nov 22 2021 Samuel Kron <blacksheep@nubecula.org> 0.1.3-1
 - Migrate settings to new Jolla requirements
 - New translations (Polish / French)
