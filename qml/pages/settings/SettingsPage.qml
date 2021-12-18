@@ -10,29 +10,37 @@ Page {
         id: listView
         model: ListModel {
             ListElement {
-                title: qsTr("Whitelist");
-                description: qsTr("Manage domains on whitelist")
+                //% "Whitelist"
+                title: qsTrId("id-whitelist");
+                //% "Manage domains on whitelist"
+                description: qsTrId("id-whitelist-desc")
                 icon: "image://theme/icon-m-browser-permissions"
                 page: "SettingsFiltersPage.qml"
                 type: 1
             }
             ListElement {
-                title: qsTr("Blacklist");
-                description: qsTr("Manage domains on blacklist")
+                //% "Blacklist"
+                title: qsTrId("id-blacklist");
+                //% "Manage domains on blacklist"
+                description: qsTrId("id-blacklist-desc")
                 icon: "image://theme/icon-m-vpn"
                 page: "SettingsFiltersPage.qml"
                 type: 2
             }
             ListElement {
-                title: qsTr("Server Info");
-                description: qsTr("Show server info")
+                //% "Server Info"
+                title: qsTrId("id-server-info");
+                //% "Show server info"
+                description: qsTrId("id-server-info-desc")
                 icon: "image://theme/icon-m-about"
                 page: "SettingsServerInfoPage.qml"
                 type: 0
             }
             ListElement {
-                title: qsTr("About");
-                description: qsTr("Infos about Porthole")
+                //% "About"
+                title: qsTrId("id-about");
+                //% "Infos about Porthole"
+                description: qsTrId("id-about-desc")
                 icon: "image://theme/icon-m-about"
                 page: "../AboutPage.qml"
                 type: 0
@@ -41,7 +49,8 @@ Page {
 
         anchors.fill: parent
         header: PageHeader {
-            title: qsTr("Settings")
+            //% "Settings"
+            title: qsTrId("id-settings")
         }
 
         delegate: ListItem {

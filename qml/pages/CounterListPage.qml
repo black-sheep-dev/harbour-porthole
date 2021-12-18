@@ -57,7 +57,8 @@ Page {
                         font.pixelSize: Theme.fontSizeMedium
                     }
                     Label {
-                        text: qsTr("%n Request(s)", "0", model.count)
+                        //% "%n Request(s)"
+                        text: qsTrId("id-requests", "0", model.count)
                         color: Theme.secondaryColor
                         font.pixelSize: Theme.fontSizeSmall
                     }

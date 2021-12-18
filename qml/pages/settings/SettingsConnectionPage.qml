@@ -19,8 +19,10 @@ Page {
     SilicaFlickable {
         PullDownMenu {
             MenuItem {
-                text: qsTr("Reset")
-                onClicked: remorse.execute(qsTr("Reset application"), function() {
+                //% "Reset"
+                text: qsTrId("id-reset")
+                //% "Reset application"
+                onClicked: remorse.execute(qsTrId("id-reset-application"), function() {
                     Porthole.url = ""
                     Porthole.accessToken = ""
                     Porthole.saveSettings()
@@ -41,15 +43,18 @@ Page {
             spacing: Theme.paddingLarge
 
             PageHeader {
-                title: qsTr("Connection Settings")
+                //% "Connection Settings"
+                title: qsTrId("id-connection-settings")
             }
 
             TextField {
                 id: urlField
                 width: parent.width
 
-                label: qsTr("URL")
-                placeholderText: qsTr("Enter URL (e.g. http://pi-hole.local)")
+                //% "URL"
+                label: qsTrId("id-url")
+                //% "Enter URL (e.g. http://pi-hole.local)"
+                placeholderText: qsTrId("id-enter-url")
 
                 text: Porthole.url
 
@@ -69,8 +74,10 @@ Page {
                 id: tokenField
                 width: parent.width
 
-                label: qsTr("Access Token")
-                placeholderText: qsTr("Enter access token")
+                //% "Access Token"
+                label: qsTrId("id-access-token")
+                //% "Enter access token"
+                placeholderText: qsTrId("id-enter-access-token")
 
                 text: Porthole.accessToken
 

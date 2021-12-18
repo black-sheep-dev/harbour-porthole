@@ -20,48 +20,64 @@ Page {
             spacing: Theme.paddingMedium
 
             PageHeader {
-                title: qsTr("Server Info")
+                //% "Server Info"
+                title: qsTrId("id-server-info")
             }
 
             SectionHeader {
-                text: qsTr("Gravity")
+                //% "Gravity"
+                text: qsTrId("id-gravity")
             }
 
             DetailItem {
-                label: qsTr("File exists")
-                value: Porthole.summary.gravity_last_updated.file_exists ? qsTr("yes") : qsTr("no")
+                //% "File exists"
+                label: qsTrId("id-file-exists")
+                value: Porthole.summary.gravity_last_updated.file_exists ?
+                           //% "yes"
+                           qsTrId("id-yes") :
+                           //% "no"
+                           qsTrId("id-no")
             }
 
             DetailItem {
-                label: qsTr("Last update")
+                //% "Last update"
+                label: qsTrId("id-last-update")
                 value: new Date(Porthole.summary.gravity_last_updated.absolute * 1000).toLocaleString()
             }
 
             DetailItem {
-                label: qsTr("Timespan")
-                value: qsTr("%n day(s)", "0", Porthole.summary.gravity_last_updated.relative.days)
+                //% "Timespan"
+                label: qsTrId("id-timespan")
+                //% "%n day(s)"
+                value: qsTrId("id-n-days", "0", Porthole.summary.gravity_last_updated.relative.days)
                         + "\n"
-                        + qsTr("%n hour(s)", "0", Porthole.summary.gravity_last_updated.relative.hours )
+                        //% "%n hour(s)"
+                        + qsTrId("id-n-hours", "0", Porthole.summary.gravity_last_updated.relative.hours )
                         + "\n"
-                        + qsTr("%n minute(s)", "0", Porthole.summary.gravity_last_updated.relative.minutes)
+                        //% "%n minute(s)"
+                        + qsTrId("id-n-minutes", "0", Porthole.summary.gravity_last_updated.relative.minutes)
             }
 
             SectionHeader {
-                text: qsTr("Software Versions")
+                //% "Software Versions"
+                text: qsTrId("id-software-version")
             }
 
             DetailItem {
-                label: qsTr("Core")
+                //% "Core"
+                label: qsTrId("id-core")
                 value: Porthole.versions.core_current //+ Porthole.versions.core_update ? (" (" + Porthole.versions.core_latest + ")") : ""
             }
 
             DetailItem {
-                label: qsTr("Web")
+                //% "Web"
+                label: qsTrId("id-web")
                 value: Porthole.versions.web_current //+ Porthole.versions.web_update ? (" (" + Porthole.versions.web_latest + ")") : ""
             }
 
             DetailItem {
-                label: qsTr("FTL")
+                //% "FTL"
+                label: qsTrId("id-ftl")
                 value: Porthole.versions.FTL_current //+ Porthole.versions.FTL_update ? (" (" + Porthole.versions.FTL_latest + ")") : ""
             }
 

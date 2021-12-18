@@ -10,9 +10,14 @@
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication::setApplicationVersion(APP_VERSION);
-    QCoreApplication::setOrganizationName(QStringLiteral("nubecula.org"));
-    QCoreApplication::setOrganizationDomain(QStringLiteral("nubecula.org"));
+    QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
+    QScopedPointer<QQuickView> v(SailfishApp::createView());
+
+
+    app->setApplicationVersion(APP_VERSION);
+    app->setApplicationName("Porthole");
+    app->setOrganizationDomain("org.nubecula");
+    app->setOrganizationName("org.nubecula");
 
 #ifdef QT_DEBUG
     #define uri "org.nubecula.harbour.porthole"
@@ -38,5 +43,8 @@ int main(int argc, char *argv[])
         return app;
     });
 
-    return SailfishApp::main(argc, argv);
+    v->setSource(SailfishApp::pathTo("qml/harbour-porthole.qml"));
+    v->show();
+
+    return app->exec();
 }

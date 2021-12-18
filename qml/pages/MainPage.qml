@@ -15,17 +15,20 @@ Page {
 
         PullDownMenu {
             MenuItem {
-                text: qsTr("Settings")
+                //% "Settings"
+                text: qsTrId("id-settings")
                 onClicked: pageStack.animatorPush(Qt.resolvedUrl("settings/SettingsPage.qml"))
             }
 
             MenuItem {
-                text: qsTr("Analysis")
+                //% "Analysis"
+                text: qsTrId("id-analysis")
                 onClicked: pageStack.animatorPush(Qt.resolvedUrl("AnalysisPage.qml"))
             }
 
             MenuItem {
-                text: qsTr("Refresh")
+                //% "Refresh"
+                text: qsTrId("id-refresh")
                 onClicked: refresh()
             }
         }
@@ -40,19 +43,24 @@ Page {
             spacing: Theme.paddingLarge
 
             PageHeader {
-                title: qsTr("Dashboard")
+                //% "Dashboard"
+                title: qsTrId("id-dashboard")
             }
 
             TextSwitch {
                 id: statusSwitch
-                text: qsTr("Ad blocking")
-                description: qsTr("Enable / disable ad blocking")
+
+                //% "Ad blocking"
+                text: qsTrId("id-ad-blocking")
+                //% "Enable / disable ad blocking"
+                description: qsTrId("id-toggle-blocking")
 
                 onClicked: Porthole.sendRequest(checked ? "enable" : "disable", true)
             }
 
             SectionHeader {
-                text: qsTr("Percent Blocked")
+                //% "Percent Blocked"
+                text: qsTrId("id-percent-blocked")
             }
 
             ProgressCircle {
@@ -72,30 +80,35 @@ Page {
             }
 
             SectionHeader {
-                text: qsTr("Today Statistics")
+                //% "Today Statistics"
+                text: qsTrId("id-today-statistics")
             }
 
             DetailItem {
                 id: totalClients
-                label: qsTr("Total Clients")
+                //% "Total Clients"
+                label: qsTrId("id-total-clients")
                 value: Porthole.summary.unique_clients
             }
 
             DetailItem {
                 id: totalQueries
-                label: qsTr("Total Queries")
+                //%  "Total Queries"
+                label: qsTrId("id-total-queries")
                 value: Porthole.summary.dns_queries_today
             }
 
             DetailItem {
                 id: blockedQueries
-                label: qsTr("Queries Blocked")
+                //%  "Queries Blocked"
+                label: qsTrId("id-queries-blocked")
                 value: Porthole.summary.ads_blocked_today
             }
 
             DetailItem {
                 id: domainsOnBlocklist
-                label: qsTr("Domains on Blocklist")
+                //%  "Domains on Blocklist"
+                label: qsTrId("id-domains-on-blocklist")
                 value: Porthole.summary.domains_being_blocked
             }           
         }

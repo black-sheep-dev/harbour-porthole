@@ -20,7 +20,8 @@ Page {
     SilicaFlickable {
         PullDownMenu {
             MenuItem {
-                text: qsTr("Add")
+                //% "Add"
+                text: qsTrId("id-add")
                 onClicked: {
                     var dialog = pageStack.push(Qt.resolvedUrl("../../dialogs/EditFilterDialog.qml"))
 
@@ -57,11 +58,16 @@ Page {
                 }
             }
             MenuItem {
-                text: qsTr("Refresh")
+                //% "Refresh"
+                text: qsTrId("id-refresh")
                 onClicked: refresh()
             }
             MenuItem {
-                text: listView.showSearch ? qsTr("Hide Search") : qsTr("Search")
+                text: listView.showSearch ?
+                          //% "Hide Search"
+                          qsTrId("id-hide-search") :
+                          //% "Search"
+                          qsTrId("id-search")
                 onClicked: listView.showSearch = !listView.showSearch
             }
         }
@@ -73,7 +79,11 @@ Page {
             width: parent.width
 
             PageHeader {
-                title: type === 1 ? qsTr("Whitelist") : qsTr("Blacklist")
+                title: type === 1 ?
+                           //% "Whitelist"
+                           qsTrId("id-whitelist") :
+                           //% "Blacklist"
+                           qsTrId("id-blacklist")
             }
 
             SearchField {
@@ -133,8 +143,10 @@ Page {
 
                 menu: ContextMenu {
                     MenuItem {
-                        text: qsTr("Delete")
-                        onClicked: delegate.remorseAction(qsTr("Delete filter"), function() {
+                        //% "Delete"
+                        text: qsTrId("id-delete")
+                        //% "Delete filter"
+                        onClicked: delegate.remorseAction(qsTrId("id-delete-filter"), function() {
                             var list
 
                             switch (model.type) {
@@ -207,8 +219,10 @@ Page {
 
             ViewPlaceholder {
                 enabled: listView.count === 0 && !page.busy
-                text: qsTr("No filters available")
-                hintText: qsTr("Pull down to add one")
+                //% "No filters available"
+                text: qsTrId("id-no-filters")
+                //% "Pull down to add one"
+                hintText: qsTrId("id-filter-add-info")
             }
 
             VerticalScrollDecorator {}
@@ -240,12 +254,14 @@ Page {
         target: Porthole
         onRequestFailed: {
             if (query.indexOf("add=") >= 0) {
-                notification.show(qsTr("Failed to add filter"))
+                //% "Failed to add filter"
+                notification.show(qsTrId("id-add-filter-failed"))
                 return
             }
 
             if (query.indexOf("sub=") >= 0) {
-                notification.show(qsTr("Failed to delete filter"))
+                //% "Failed to delete filter"
+                notification.show(qsTrId("id-del-filter-failed"))
                 return
             }
 

@@ -10,8 +10,10 @@ Dialog {
 
     DialogHeader {
         id: header
-        acceptText: qsTr("Continue")
-        cancelText: qsTr("Back")
+        //% "Continue"
+        acceptText: qsTrId("id-continue")
+        //% "Back"
+        cancelText: qsTrId("id-back")
     }
 
     Column {
@@ -23,7 +25,8 @@ Dialog {
             x: Theme.horizontalPageMargin
             width: parent.width - 2*x
 
-            text: qsTr("Access Token")
+            //% "Access Token"
+            text: qsTrId("id-access-token")
 
             color: Theme.secondaryHighlightColor
             font.pixelSize: Theme.fontSizeLarge
@@ -35,11 +38,14 @@ Dialog {
             wrapMode: Text.WordWrap
             font.pixelSize: Theme.fontSizeSmall
 
-            text: qsTr("You need to provide an access token to connect to Pi-hole server.")
+            //% "You need to provide an access token to connect to Pi-hole server."
+            text: qsTrId("id-wizard-provice-access-token")
                   + "\n"
-                  + qsTr("This token can be found in config file e.g. \"/etc/pihole/setupVars.conf\".")
+                    //% "This token can be found in config file e.g."
+                  + qsTrId("id-wizard-config-file-info") +  "\"/etc/pihole/setupVars.conf\"."
                   + "\n"
-                  + qsTr("Search for entry WEBPASSWORD.")
+                    //% "Search for entry WEBPASSWORD."
+                  + qsTrId("id-wizard-search-webpassword")
 
             color: Theme.highlightColor
         }
@@ -53,8 +59,10 @@ Dialog {
             id: tokenField
             width: parent.width
 
-            label: qsTr("Access Token")
-            placeholderText: qsTr("Enter access token")
+            //% "Access Token"
+            label: qsTrId("id-access-token")
+            //% "Enter access token"
+            placeholderText: qsTrId("id-enter-access-token")
 
             text: Porthole.accessToken
 

@@ -25,7 +25,8 @@ Page {
             spacing: Theme.paddingMedium
 
             PageHeader {
-                title: qsTr("About")
+                //% "About"
+                title: qsTrId("id-about")
             }
 
             Image {
@@ -46,7 +47,8 @@ Page {
                 font.pixelSize: Theme.fontSizeExtraLarge
                 color: Theme.secondaryHighlightColor
 
-                text: qsTr("Porthole")
+                //% "Porthole"
+                text: qsTrId("id-porthole")
             }
 
             Label {
@@ -66,11 +68,13 @@ Page {
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeSmall
 
-                text: qsTr("Porthole is a Sailfish OS application to control a Pi-hole server.")
+                //% "Porthole is a Sailfish OS application to control a Pi-hole server."
+                text: qsTrId("id-about-text")
             }
 
             SectionHeader {
-                text: qsTr("Translations")
+                //% "Translations"
+                text: qsTrId("id-translations")
             }
 
             Label {
@@ -79,7 +83,8 @@ Page {
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeSmall
 
-                text: qsTr("Your language is not available? You are welcome to support this project by translating it on my self hosted Weblate server.")
+                //% "Your language is not available? You are welcome to support this project by translating it on my self hosted Weblate server."
+                text: qsTrId("id-translations-desc")
             }
 
             BackgroundItem{
@@ -123,7 +128,8 @@ Page {
             }
 
             SectionHeader{
-                text: qsTr("Sources")
+                //% "Sources"
+                text: qsTrId("id-sources")
             }
 
             BackgroundItem{
@@ -161,13 +167,15 @@ Page {
                 width: parent.width
 
                 Button {
-                    text: qsTr("Give star")
+                    //% "Give star"
+                    text: qsTrId("id-give-star")
                     onClicked: sailHubInterface.call("addStar", ["black-sheep-dev", Qt.application.name])
                 }
             }
 
             SectionHeader{
-                text: qsTr("Donations")
+                //% "Donations"
+                text: qsTrId("id-donations")
             }
 
             Label {
@@ -176,7 +184,8 @@ Page {
 
                 wrapMode: Text.Wrap
                 font.pixelSize: Theme.fontSizeSmall
-                text: qsTr("If you like my work why not buy me a beer?")
+                //% "If you like my work why not buy me a beer?"
+                text: qsTrId("id-buy-beer")
             }
 
             BackgroundItem{
@@ -202,7 +211,8 @@ Page {
                         wrapMode: Text.WrapAnywhere
                         font.pixelSize: Theme.fontSizeSmall
                         color: parent.parent.pressed ? Theme.highlightColor : Theme.primaryColor
-                        text: qsTr("Donate with PayPal")
+                        //% "Donate with PayPal"
+                        text: qsTrId("id-donate-paypal")
                     }
                 }
                 onClicked: Qt.openUrlExternally("https://www.paypal.com/paypalme/nubecula/1")
@@ -232,7 +242,8 @@ Page {
                         wrapMode: Text.WrapAnywhere
                         font.pixelSize: Theme.fontSizeSmall
                         color: parent.parent.pressed ? Theme.highlightColor : Theme.primaryColor
-                        text: qsTr("Donate with Liberpay")
+                        //% "Donate with Liberpay"
+                        text: qsTrId("id-donate-liberpay")
                     }
                 }
                 onClicked: Qt.openUrlExternally("https://liberapay.com/black-sheep-dev/donate")

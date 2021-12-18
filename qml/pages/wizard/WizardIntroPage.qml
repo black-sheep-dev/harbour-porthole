@@ -14,7 +14,8 @@ Dialog {
 
     DialogHeader {
         id: header
-        acceptText: qsTr("Continue")
+        //% "Continue"
+        acceptText: qsTrId("id-continue")
         cancelText: ""
     }
 
@@ -43,7 +44,8 @@ Dialog {
         Label {
             width: parent.width
 
-            text: qsTr("Welcome to Porthole")
+            //% "Welcome to Porthole"
+            text: qsTrId("id-welcome-to-porthole")
 
             color: Theme.secondaryHighlightColor
             font.bold: true
@@ -63,7 +65,8 @@ Dialog {
 
             wrapMode: Text.Wrap
 
-            text: qsTr("This app is not configured yet.")
+            //% "This app is not configured yet."
+            text: qsTrId("id-wizard-not-configured")
         }
 
         Label {
@@ -74,7 +77,8 @@ Dialog {
 
             wrapMode: Text.Wrap
 
-            text: qsTr("The setup wizard will guide you through the configuration process.")
+            //% "The setup wizard will guide you through the configuration process."
+            text: qsTrId("id-wizard-intro-desc")
         }
 
         Item {
@@ -100,7 +104,8 @@ Dialog {
 
             wrapMode: Text.Wrap
 
-            text: qsTr("If there are errors during the setup process, you can try to reset the data from a previous installation.")
+            //% "If there are errors during the setup process, you can try to reset the data from a previous installation."
+            text: qsTrId("id-wizard-intro-error-info")
         }
 
         Item {
@@ -110,8 +115,10 @@ Dialog {
 
         ButtonLayout {
             Button {
-                text: qsTr("Reset")
-                onClicked: resetPopup.execute(qsTr("Resetting application"), function() {
+                //% "Reset"
+                text: qsTrId("id-reset")
+                //% "Resetting application"
+                onClicked: resetPopup.execute(qsTrId("id-resseting"), function() {
                     Porthole.reset()
                 })
             }

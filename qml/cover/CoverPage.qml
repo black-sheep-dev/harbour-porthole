@@ -38,7 +38,8 @@ CoverBackground {
         spacing: Theme.paddingSmall
 
         Label {
-            text: qsTr("Total Queries")
+            //% "Total queries"
+            text: qsTrId("id-total-queries")
             x: Theme.horizontalPageMargin
             font.pixelSize: Theme.fontSizeExtraSmall
             font.bold: true
@@ -50,7 +51,8 @@ CoverBackground {
             text: Porthole.summary.dns_queries_today
         }
         Label {
-            text: qsTr("Queries Blocked")
+            //% "Queries blocked"
+            text: qsTrId("id-queries-blocked")
             x: Theme.horizontalPageMargin
             font.pixelSize: Theme.fontSizeExtraSmall
             font.bold: true
@@ -62,7 +64,8 @@ CoverBackground {
             text: Porthole.summary.ads_blocked_today
         }
         Label {
-            text: qsTr("Percent Blocked")
+            //% "Percent blocked"
+            text: qsTrId("id-percent-blocked")
             x: Theme.horizontalPageMargin
             font.pixelSize: Theme.fontSizeExtraSmall
             font.bold: true

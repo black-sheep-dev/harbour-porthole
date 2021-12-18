@@ -36,35 +36,43 @@ ApplicationWindow {
                 return
 
             case 1: // QNetworkReply::ConnectionRefusedError
-                notification.show(qsTr("Connection refused"))
+                //% "Connection refused"
+                notification.show(qsTrId("id-error-connection-refused"))
                 break
 
             case 3: // QNetworkReply::HostNotFoundError
-                notification.show(qsTr("Host not found"))
+                //% "Host not found"
+                notification.show(qsTrId("id-error-host-not-found"))
                 break
 
             case 4: // QNetworkReply::TimeoutError
-                notification.show(qsTr("Connection timed out"))
+                //% "Connection timed out"
+                notification.show(qsTrId("id-error-connection-timed-out"))
                 break
 
             case 6: // QNetworkReply::SslHandshakeFailedError
-                notification.show(qsTr("Ssl handshake failed"))
+                //% "Ssl handshake failed"
+                notification.show(qsTrId("id-error-ssl-handshake-failed"))
                 break
 
             case 201: // QNetworkReply::ContentAccessDenied
-                notification.show(qsTr("Access denied"))
+                //% "Access denied"
+                notification.show(qsTrId("id-error-access-denied"))
                 break
 
             case 203: // QNetworkReply::ContentNotFoundError
-                notification.show(qsTr("Not found"))
+                //% "Not found"
+                notification.show(qsTrId("id-error-not-found"))
                 break
 
             case 401: // QNetworkReply::InternalServerError
-                notification.show(qsTr("Internal server error"))
+                //% "Internal server error"
+                notification.show(qsTrId("id-error-internal-server-error"))
                 break
 
             default:
-                notification.show(qsTr("Unkown connection error"))
+                //% "Unkown connection error"
+                notification.show(qsTrId("id-error-unkown-connection-error"))
                 break
             }
         }

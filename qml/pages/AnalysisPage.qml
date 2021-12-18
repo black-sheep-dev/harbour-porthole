@@ -10,29 +10,37 @@ Page {
         id: listView
         model: ListModel {
             ListElement {
-                title: qsTr("Top permitted");
-                description: qsTr("Show top permitted domains")
+                //% "Top permitted"
+                title: qsTrId("id-top-permitted");
+                //% "Show top permitted domains"
+                description: qsTrId("id-top-permitted-desc")
                 icon: "image://theme/icon-m-acknowledge"
                 page: "CounterListPage.qml"
                 type: 0
             }
             ListElement {
-                title: qsTr("Top blocked");
-                description: qsTr("Show top blocked domains")
+                //% "Top blocked"
+                title: qsTrId("id-top-blocked");
+                //% "Show top blocked domains"
+                description: qsTrId("id-top-blocked-desc")
                 icon: "image://theme/icon-m-vpn"
                 page: "CounterListPage.qml"
                 type: 1
             }
             ListElement {
-                title: qsTr("Top clients");
-                description: qsTr("Show top clients")
+                //% "Top clients"
+                title: qsTrId("id-top-clients");
+                //% "Show top clients"
+                description: qsTrId("id-top-clients-desc")
                 icon: "image://theme/icon-m-media-artists"
                 page: "CounterListPage.qml"
                 type: 2
             }
             ListElement {
-                title: qsTr("Top clients blocked");
-                description: qsTr("Show top blocked clients")
+                //% "Top clients blocked"
+                title: qsTrId("id-top-clients-blocked");
+                //% "Show top blocked clients"
+                description: qsTrId("id-top-clients-blocked-desc")
                 icon: "image://theme/icon-m-media-artists"
                 page: "CounterListPage.qml"
                 type: 3
@@ -41,7 +49,8 @@ Page {
 
         anchors.fill: parent
         header: PageHeader {
-            title: qsTr("Analysis")
+            //% "Analysis"
+            title: qsTrId("id-analysis")
         }
 
         delegate: ListItem {

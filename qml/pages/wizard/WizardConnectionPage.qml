@@ -14,8 +14,10 @@ Dialog {
 
     DialogHeader {
         id: header
-        acceptText: qsTr("Continue")
-        cancelText: qsTr("Back")
+        //% "Continue"
+        acceptText: qsTrId("id-continue")
+        //% "Back"
+        cancelText: qsTrId("id-back")
     }
 
     Column {
@@ -28,7 +30,8 @@ Dialog {
         Label {
             width: parent.width
 
-            text: qsTr("Connection Settings")
+            //% "Connection Settings"
+            text: qsTrId("id-connection-settings")
 
             color: Theme.highlightColor
             font.pixelSize: Theme.fontSizeLarge
@@ -38,9 +41,11 @@ Dialog {
             width: parent.width
             wrapMode: Text.WordWrap
 
-            text: qsTr("You need to provide the connection details to your Pi-hole server.")
+            //% "You need to provide the connection details to your Pi-hole server."
+            text: qsTrId("id-provide-connection-details")
                   + "\n"
-                  + qsTr("Please provide a full URL for this!")
+                    //% "Please provide a full URL for this!"
+                  + qsTrId("id-provide-full-url")
 
             font.pixelSize: Theme.fontSizeSmall
             color: Theme.highlightColor
@@ -65,8 +70,10 @@ Dialog {
             id: urlField
             width: parent.width
 
-            label: qsTr("URL")
-            placeholderText: qsTr("Enter URL (e.g. http://pi-hole.local)")
+            //% "URL"
+            label: qsTrId("id-url")
+            //% "Enter URL (e.g. http://pi-hole.local)"
+            placeholderText: qsTrId("id-enter-url")
 
             text: Porthole.url
 
@@ -89,7 +96,8 @@ Dialog {
         Label {
             width: parent.width
             visible: !urlField.acceptableInput
-            text: qsTr("Valid URL required!")
+            //% "Valid URL required!"
+            text: qsTrId("id-valid-url-required")
             color: Theme.errorColor
             font.pixelSize: Theme.fontSizeExtraSmall
         }
@@ -98,7 +106,8 @@ Dialog {
             visible: connectionError
 
             width: parent.width
-            text: qsTr("Failed to connect to Pi-hole server!")
+            //% "Failed to connect to Pi-hole server!"
+            text: qsTrId("id-connection-to-porthole-failed")
             color: Theme.errorColor
             font.pixelSize: Theme.fontSizeExtraSmall
         }

@@ -12,18 +12,25 @@ Dialog {
         width: parent.width
 
         DialogHeader {
-            acceptText: edit ? qsTr("Save") : qsTr("Add")
+            acceptText: edit ?
+                            //% "Save"
+                            qsTrId("id-save") :
+                            //% "Add"
+                            qsTrId("id-add")
         }
 
         ComboBox {
             id: filterBox
-            label: qsTr("Filter")
+            //% "Filter"
+            label: qsTrId("id-filter")
             menu: ContextMenu {
                 MenuItem {
-                    text: qsTr("Domain")
+                    //% "Domain"
+                    text: qsTrId("id-domain")
                 }
                 MenuItem {
-                    text: qsTr("RegEx filter")
+                    //% "RegEx filter"
+                    text: qsTrId("id-regex-filter")
                 }
             }
         }
@@ -31,8 +38,16 @@ Dialog {
         TextField {
             id: domainField
             width: parent.width
-            placeholderText: filterBox.currentIndex === 0 ? qsTr("Enter domain") : qsTr("Enter regular expression")
-            label: filterBox.currentIndex === 0 ? qsTr("Domain") : qsTr("Regular Expression")
+            placeholderText: filterBox.currentIndex === 0 ?
+                                 //% "Enter domain"
+                                 qsTrId("id-enter-domain") :
+                                 //% "Enter regular expression"
+                                 qsTrId("id-enter-regex")
+            label: filterBox.currentIndex === 0 ?
+                       //% "Domain"
+                       qsTrId("id-domain") :
+                       //% "Regular expression"
+                       qsTrId("id-regex")
             inputMethodHints: filterBox.currentIndex === 0 ? Qt.ImhUrlCharactersOnly : Qt.ImhNoPredictiveText
         }
 
@@ -40,15 +55,19 @@ Dialog {
             //visible: filterBox.currentIndex === 0
             visible: false
             id: wildcardSwitch
-            text: qsTr("Add domain as wildcard")
-            description: qsTr("Activate this to involve all subdomains")
+            //% "Add domain as wildcard"
+            text: qsTrId("id-add-domain-wildcard")
+            //% "Activate this to involve all subdomains"
+            description: qsTrId("id-add-domain-wildcard-desc")
         }
 
         TextField {
             id: commentField
             width: parent.width
-            placeholderText: qsTr("Enter description (optional)")
-            label: qsTr("Comment")
+            //% "Enter description (optional)"
+            placeholderText: qsTrId("id-enter-description-optional")
+            //% "Comment"
+            label: qsTrId("id-comment")
         }
 
     }
