@@ -7,13 +7,13 @@ Page {
 
     allowedOrientations: Orientation.All
 
-    DBusInterface {
-        id: sailHubInterface
+//    DBusInterface {
+//        id: sailHubInterface
 
-        service: "harbour.sailhub.service"
-        iface: "harbour.sailhub.service"
-        path: "/harbour/sailhub/service"
-    }
+//        service: "harbour.sailhub.service"
+//        iface: "harbour.sailhub.service"
+//        path: "/harbour/sailhub/service"
+//    }
 
     SilicaFlickable {
         anchors.fill: parent
@@ -31,7 +31,7 @@ Page {
 
             Image {
                 id: logo
-                source: "/usr/share/icons/hicolor/512x512/apps/" + Qt.application.name + ".png"
+                source: "/usr/share/icons/hicolor/512x512/apps/harbour-porthole.png"
                 smooth: true
                 height: width
                 width: parent.width / 2
@@ -110,12 +110,12 @@ Page {
                         wrapMode: Text.WrapAnywhere
                         font.pixelSize: Theme.fontSizeSmall
 
-                        text: "https://weblate.nubecula.org/projects/" + Qt.application.name
+                        text: "https://weblate.nubecula.org/projects/harbour-porthole"
                         color: parent.parent.pressed ? Theme.highlightColor : Theme.primaryColor
 
                     }
                 }
-                onClicked: Qt.openUrlExternally("https://weblate.nubecula.org/engage/" + Qt.application.name)
+                onClicked: Qt.openUrlExternally("https://weblate.nubecula.org/engage/harbour-porthole")
             }
 
             Image {
@@ -124,7 +124,7 @@ Page {
                 height: sourceSize.height * width / sourceSize.width
                 smooth: true
                 fillMode: Image.PreserveAspectFit
-                source: "http://weblate.nubecula.org/widgets/" + Qt.application.name + "/-/" + Qt.application.name + "/multi-auto.svg"
+                source: "http://weblate.nubecula.org/widgets/harbour-porthole/-/harbour-porthole/multi-auto.svg"
             }
 
             SectionHeader{
@@ -155,23 +155,23 @@ Page {
                         wrapMode: Text.WrapAnywhere
                         font.pixelSize: Theme.fontSizeSmall
 
-                        text: "https://github.com/black-sheep-dev/" + Qt.application.name
+                        text: "https://github.com/black-sheep-dev/harbour-porthole"
                         color: parent.parent.pressed ? Theme.highlightColor : Theme.primaryColor
 
                     }
                 }
-                onClicked: Qt.openUrlExternally("https://github.com/black-sheep-dev/" + Qt.application.name)
+                onClicked: Qt.openUrlExternally("https://github.com/black-sheep-dev/harbour-porthole")
             }
 
-            ButtonLayout {
-                width: parent.width
+//            ButtonLayout {
+//                width: parent.width
 
-                Button {
-                    //% "Give star"
-                    text: qsTrId("id-give-star")
-                    onClicked: sailHubInterface.call("addStar", ["black-sheep-dev", Qt.application.name])
-                }
-            }
+//                Button {
+//                    //% "Give star"
+//                    text: qsTrId("id-give-star")
+//                    onClicked: sailHubInterface.call("addStar", ["black-sheep-dev", Qt.application.name])
+//                }
+//            }
 
             SectionHeader{
                 //% "Donations"

@@ -23,7 +23,11 @@ DEFINES += APP_TARGET=\\\"$$TARGET\\\"
 QT += dbus
 
 CONFIG += link_pkgconfig sailfishapp
-PKGCONFIG += sailfishsecrets nemonotifications-qt5
+PKGCONFIG += nemonotifications-qt5
+
+!defined(DISABLE_SAILFISH_SECRETS) {
+    PKGCONFIG += sailfishsecrets
+}
 
 LIBS += -lz
 
@@ -56,7 +60,6 @@ SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172 512x512
 
 # to disable building translations every time, comment out the
 # following CONFIG line
-CONFIG += sailfishapp_i18n
 
 # German translation is enabled as an example. If you aren't
 # planning to localize your app, remember to comment out the

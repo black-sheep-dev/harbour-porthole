@@ -127,6 +127,7 @@ Dialog {
         onRequestFailed: {
             canAccept = false
             connectionError = true
+
         }
         onRequestFinished: {
             if (query !== "status") return
@@ -134,5 +135,7 @@ Dialog {
             canAccept = true
         }
     }
+
+    Component.onCompleted: if (Porthole.url.length > 0) testConnection()
 }
 

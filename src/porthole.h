@@ -58,18 +58,22 @@ private slots:
 
 private:
     // sailfish secrets
+#ifndef DISABLE_SAILFISH_SECRETS
     void createCollection();
     void deleteCollection();
     void loadCredentials();
     void storeCredentials();
+#endif
 
     // settings
     void readSettings();
     void writeSettings();
 
     QNetworkAccessManager *m_manager{new QNetworkAccessManager};
+#ifndef DISABLE_SAILFISH_SECRETS
     Sailfish::Secrets::SecretManager m_secretManager;
     Sailfish::Secrets::Secret::Identifier m_secretsIdentifier;
+#endif
 
     // properties
     QString m_accessToken;
