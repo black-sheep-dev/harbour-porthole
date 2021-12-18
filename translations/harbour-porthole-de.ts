@@ -126,7 +126,7 @@
     </message>
     <message id="id-give-star">
         <source>Give star</source>
-        <translation>Stern vergeben</translation>
+        <translation type="vanished">Stern vergeben</translation>
     </message>
     <message id="id-donations">
         <source>Donations</source>
