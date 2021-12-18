@@ -20,11 +20,11 @@
     </message>
     <message id="id-save">
         <source>Save</source>
-        <translation type="unfinished">Zapisz</translation>
+        <translation>Zapisz</translation>
     </message>
     <message id="id-add">
         <source>Add</source>
-        <translation type="unfinished">Dodaj</translation>
+        <translation>Dodaj</translation>
     </message>
     <message id="id-filter">
         <source>Filter</source>
@@ -65,7 +65,7 @@
     </message>
     <message id="id-comment">
         <source>Comment</source>
-        <translation type="unfinished">Komentarze</translation>
+        <translation>Komentarze</translation>
     </message>
     <message id="id-error-connection-refused">
         <source>Connection refused</source>
@@ -101,7 +101,7 @@
     </message>
     <message id="id-about">
         <source>About</source>
-        <translation type="unfinished">O Porthole</translation>
+        <translation>O Quartermaster</translation>
     </message>
     <message id="id-porthole">
         <source>Porthole</source>
@@ -114,35 +114,35 @@
     </message>
     <message id="id-translations">
         <source>Translations</source>
-        <translation type="unfinished">Tłumaczenia</translation>
+        <translation>Tłumaczenia</translation>
     </message>
     <message id="id-translations-desc">
         <source>Your language is not available? You are welcome to support this project by translating it on my self hosted Weblate server.</source>
-        <translation type="unfinished">Twój język nie jest dostępny? Możesz wesprzeć ten projekt, tłumacząc go na moim własnym serwerze Weblate.</translation>
+        <translation>Twój język nie jest dostępny? Możesz wesprzeć ten projekt, tłumacząc go na moim własnym serwerze Weblate.</translation>
     </message>
     <message id="id-sources">
         <source>Sources</source>
-        <translation type="unfinished">Źródła</translation>
+        <translation>Źródła</translation>
     </message>
     <message id="id-give-star">
         <source>Give star</source>
-        <translation type="unfinished">Daj gwiazdkę</translation>
+        <translation>Daj gwiazdkę</translation>
     </message>
     <message id="id-donations">
         <source>Donations</source>
-        <translation type="unfinished">Dotacje</translation>
+        <translation>Dotacje</translation>
     </message>
     <message id="id-buy-beer">
         <source>If you like my work why not buy me a beer?</source>
-        <translation type="unfinished">Jeśli podoba Ci się moja praca, dlaczego nie postawisz mi piwa?</translation>
+        <translation>Jeśli podoba Ci się moja praca, dlaczego nie postawisz mi piwa?</translation>
     </message>
     <message id="id-donate-paypal">
         <source>Donate with PayPal</source>
-        <translation type="unfinished">Wspomóż za pomocą PayPal</translation>
+        <translation>Wspomóż za pomocą PayPal</translation>
     </message>
     <message id="id-donate-liberpay">
         <source>Donate with Liberpay</source>
-        <translation type="unfinished">Wspomóż za pomocą Librepay</translation>
+        <translation>Wspomóż za pomocą Librepay</translation>
     </message>
     <message id="id-top-permitted">
         <source>Top permitted</source>
@@ -190,11 +190,11 @@
     </message>
     <message id="id-settings">
         <source>Settings</source>
-        <translation type="unfinished">Ustawienia</translation>
+        <translation>Ustawienia</translation>
     </message>
     <message id="id-refresh">
         <source>Refresh</source>
-        <translation type="unfinished">Odśwież</translation>
+        <translation>Odśwież</translation>
     </message>
     <message id="id-dashboard">
         <source>Dashboard</source>
@@ -222,11 +222,11 @@
     </message>
     <message id="id-reset">
         <source>Reset</source>
-        <translation type="unfinished">Reset</translation>
+        <translation>Reset</translation>
     </message>
     <message id="id-reset-application">
         <source>Reset application</source>
-        <translation type="unfinished">Resetowanie aplikacji</translation>
+        <translation>Resetowanie aplikacji</translation>
     </message>
     <message id="id-connection-settings">
         <source>Connection Settings</source>
@@ -242,19 +242,19 @@
     </message>
     <message id="id-access-token">
         <source>Access Token</source>
-        <translation type="unfinished">Token dostępu</translation>
+        <translation>Token dostępu</translation>
     </message>
     <message id="id-enter-access-token">
         <source>Enter access token</source>
-        <translation type="unfinished">Wprowadź token dostępu</translation>
+        <translation>Wprowadź token dostępu</translation>
     </message>
     <message id="id-hide-search">
         <source>Hide Search</source>
-        <translation type="unfinished">Ukryj wyszukiwanie</translation>
+        <translation>Ukryj wyszukiwanie</translation>
     </message>
     <message id="id-search">
         <source>Search</source>
-        <translation type="unfinished">Wyszukaj</translation>
+        <translation>Wyszukaj</translation>
     </message>
     <message id="id-whitelist">
         <source>Whitelist</source>
@@ -266,7 +266,7 @@
     </message>
     <message id="id-delete">
         <source>Delete</source>
-        <translation type="unfinished">Usuń</translation>
+        <translation>Usuń</translation>
     </message>
     <message id="id-delete-filter">
         <source>Delete filter</source>
@@ -274,7 +274,7 @@
     </message>
     <message id="id-no-filters">
         <source>No filters available</source>
-        <translation type="unfinished">Brak dostępnych plików</translation>
+        <translation>Brak dostępnych plików</translation>
     </message>
     <message id="id-filter-add-info">
         <source>Pull down to add one</source>
@@ -362,11 +362,11 @@
     </message>
     <message id="id-continue">
         <source>Continue</source>
-        <translation type="unfinished">Kontynuuj</translation>
+        <translation>Kontynuuj</translation>
     </message>
     <message id="id-back">
         <source>Back</source>
-        <translation type="unfinished">Wstecz</translation>
+        <translation>Wstecz</translation>
     </message>
     <message id="id-provide-connection-details">
         <source>You need to provide the connection details to your Pi-hole server.</source>
@@ -386,7 +386,7 @@
     </message>
     <message id="id-complete">
         <source>Complete</source>
-        <translation type="unfinished">Zakończ</translation>
+        <translation>Zakończ</translation>
     </message>
     <message id="id-welcome-to-porthole">
         <source>Welcome to Porthole</source>
@@ -394,19 +394,19 @@
     </message>
     <message id="id-wizard-not-configured">
         <source>This app is not configured yet.</source>
-        <translation type="unfinished">Ta aplikacja nie jest jeszcze skonfigurowana.</translation>
+        <translation>Ta aplikacja nie jest jeszcze skonfigurowana.</translation>
     </message>
     <message id="id-wizard-intro-desc">
         <source>The setup wizard will guide you through the configuration process.</source>
-        <translation type="unfinished">Kreator instalacji poprowadzi Cię przez proces konfiguracji.</translation>
+        <translation>Kreator instalacji poprowadzi Cię przez proces konfiguracji.</translation>
     </message>
     <message id="id-wizard-intro-error-info">
         <source>If there are errors during the setup process, you can try to reset the data from a previous installation.</source>
-        <translation type="unfinished">Jeśli podczas procesu instalacji wystąpią błędy, możesz spróbować zresetować dane z poprzedniej instalacji.</translation>
+        <translation>Jeśli podczas procesu instalacji wystąpią błędy, możesz spróbować zresetować dane z poprzedniej instalacji.</translation>
     </message>
     <message id="id-resseting">
         <source>Resetting application</source>
-        <translation type="unfinished">Resetowanie aplikacji</translation>
+        <translation>Resetowanie aplikacji</translation>
     </message>
     <message id="id-wizard-provice-access-token">
         <source>You need to provide an access token to connect to Pi-hole server.</source>
@@ -422,7 +422,7 @@
     </message>
     <message id="id-setup-complete">
         <source>Setup process completed</source>
-        <translation type="unfinished">Proces konfiguracji zakończony</translation>
+        <translation>Proces konfiguracji zakończony</translation>
     </message>
     <message id="id-about-text">
         <source>Porthole is a Sailfish OS application to control a Pi-hole server.</source>
