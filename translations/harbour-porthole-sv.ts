@@ -101,7 +101,7 @@
     </message>
     <message id="id-about">
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Om</translation>
     </message>
     <message id="id-porthole">
         <source>Porthole</source>
@@ -122,7 +122,7 @@
     </message>
     <message id="id-sources">
         <source>Sources</source>
-        <translation type="unfinished"></translation>
+        <translation>Källor</translation>
     </message>
     <message id="id-give-star">
         <source>Give star</source>
@@ -130,11 +130,11 @@
     </message>
     <message id="id-donations">
         <source>Donations</source>
-        <translation type="unfinished"></translation>
+        <translation>Donationer</translation>
     </message>
     <message id="id-buy-beer">
         <source>If you like my work why not buy me a beer?</source>
-        <translation type="unfinished"></translation>
+        <translation>Om du gillar mitt arbete, kanske du bjuder på en öl?</translation>
     </message>
     <message id="id-donate-paypal">
         <source>Donate with PayPal</source>
@@ -189,11 +189,11 @@
     </message>
     <message id="id-settings">
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Inställningar</translation>
     </message>
     <message id="id-refresh">
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>Uppdatera</translation>
     </message>
     <message id="id-dashboard">
         <source>Dashboard</source>
@@ -221,7 +221,7 @@
     </message>
     <message id="id-reset">
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Återställ</translation>
     </message>
     <message id="id-reset-application">
         <source>Reset application</source>
