@@ -101,7 +101,7 @@
     </message>
     <message id="id-about">
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>O aplikácii</translation>
     </message>
     <message id="id-porthole">
         <source>Porthole</source>
@@ -114,35 +114,35 @@
     </message>
     <message id="id-translations">
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation>Preklady</translation>
     </message>
     <message id="id-translations-desc">
         <source>Your language is not available? You are welcome to support this project by translating it on my self hosted Weblate server.</source>
-        <translation type="unfinished"></translation>
+        <translation>Váš jazyk nie je k dispozícii? Ste vítaní v podpore tohto projektu jeho prekladom na mojom hosťovanom Weblate serveri.</translation>
     </message>
     <message id="id-sources">
         <source>Sources</source>
-        <translation type="unfinished"></translation>
+        <translation>Zdroje</translation>
     </message>
     <message id="id-give-star">
         <source>Give star</source>
-        <translation type="unfinished"></translation>
+        <translation>Udeliť hviezdičku</translation>
     </message>
     <message id="id-donations">
         <source>Donations</source>
-        <translation type="unfinished"></translation>
+        <translation>Darovania</translation>
     </message>
     <message id="id-buy-beer">
         <source>If you like my work why not buy me a beer?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ak sa ti páči moja práca, prečo mi nekúpiš pivo?</translation>
     </message>
     <message id="id-donate-paypal">
         <source>Donate with PayPal</source>
-        <translation type="unfinished"></translation>
+        <translation>Sponzorovať cez PayPal</translation>
     </message>
     <message id="id-donate-liberpay">
         <source>Donate with Liberpay</source>
-        <translation type="unfinished"></translation>
+        <translation>Sponzorovať cez Liberpay</translation>
     </message>
     <message id="id-top-permitted">
         <source>Top permitted</source>
@@ -194,7 +194,7 @@
     </message>
     <message id="id-refresh">
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>Obnoviť</translation>
     </message>
     <message id="id-dashboard">
         <source>Dashboard</source>
@@ -250,11 +250,11 @@
     </message>
     <message id="id-hide-search">
         <source>Hide Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Skryť hľadanie</translation>
     </message>
     <message id="id-search">
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Hľadať</translation>
     </message>
     <message id="id-whitelist">
         <source>Whitelist</source>
