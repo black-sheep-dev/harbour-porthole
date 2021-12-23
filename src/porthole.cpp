@@ -233,7 +233,7 @@ void Porthole::readSettings()
     settings.beginGroup(QStringLiteral("APP"));
     setUrl(settings.value(QStringLiteral("url")).toString()); 
 
-    Crypto crypto(int(APP_SECRET));
+    Crypto crypto(QString(APP_SECRET).toUInt());
     const auto result = QString::fromUtf8(crypto.decrypt(QByteArray::fromBase64(settings.value(QStringLiteral("token")).toString().toUtf8()), true));
     setAccessToken(result);
 
@@ -247,7 +247,7 @@ void Porthole::writeSettings()
     settings.beginGroup(QStringLiteral("APP"));
     settings.setValue(QStringLiteral("url"), m_url);
 
-    Crypto crypto(int(APP_SECRET));
+    Crypto crypto(QString(APP_SECRET).toUInt());
     settings.setValue(QStringLiteral("token"), QString(crypto.encrypt(m_accessToken.toUtf8(), true).toBase64()));
 
     settings.endGroup();
