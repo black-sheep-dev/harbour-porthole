@@ -9,7 +9,7 @@ Name:       harbour-porthole
 # << macros
 
 Summary:    Porthole
-Version:    0.2.0
+Version:    0.2.1
 Release:    1
 Group:      Qt/Qt
 License:    MIT
@@ -25,7 +25,6 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(nemonotifications-qt5)
-BuildRequires:  pkgconfig(sailfishsecrets)
 BuildRequires:  desktop-file-utils
 
 %description

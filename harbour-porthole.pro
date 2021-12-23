@@ -10,33 +10,23 @@
 #   - translation filenames have to be changed
 
 # VERSION
-VERSION = 0.2.0
+VERSION = 0.2.1
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 # The name of your application
 TARGET = harbour-porthole
 DEFINES += APP_TARGET=\\\"$$TARGET\\\"
 
-# custom defines
-#DEFINES += DISABLE_SAILFISH_SECRETS
-
 QT += dbus
 
 CONFIG += link_pkgconfig sailfishapp
 PKGCONFIG += nemonotifications-qt5
 
-!defined(DISABLE_SAILFISH_SECRETS) {
-    PKGCONFIG += sailfishsecrets
-}
-
-LIBS += -lz
-
 SOURCES += src/harbour-porthole.cpp \
     src/models/countermodel.cpp \
     src/models/filterlistmodel.cpp \
     src/models/sortmodel.cpp \
-    src/porthole.cpp \
-    src/tools/compress.cpp
+    src/porthole.cpp
 
 DISTFILES += qml/harbour-porthole.qml \
     qml/cover/CoverPage.qml \
@@ -74,5 +64,8 @@ HEADERS += \
     src/models/countermodel.h \
     src/models/filterlistmodel.h \
     src/models/sortmodel.h \
-    src/porthole.h \
-    src/tools/compress.h
+    src/porthole.h
+
+include(secret.pri)
+include(extern/sailfishos-utils/compressor/compressor.pri)
+include(extern/sailfishos-utils/crypto/crypto.pri)

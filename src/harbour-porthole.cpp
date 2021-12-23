@@ -11,13 +11,13 @@
 int main(int argc, char *argv[])
 {
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
-    QScopedPointer<QQuickView> v(SailfishApp::createView());
-
-
     app->setApplicationVersion(APP_VERSION);
     app->setApplicationName("Porthole");
     app->setOrganizationDomain("org.nubecula");
     app->setOrganizationName("org.nubecula");
+
+    QScopedPointer<QQuickView> v(SailfishApp::createView());
+    auto context = v.data()->rootContext();
 
 #ifdef QT_DEBUG
     #define uri "org.nubecula.harbour.porthole"
@@ -29,19 +29,22 @@ int main(int argc, char *argv[])
     qmlRegisterType<FilterListModel>(uri, 1, 0, "FilterListModel");
     qmlRegisterType<SortModel>(uri, 1, 0, "SortModel");
 
-    qmlRegisterSingletonType<Porthole>(uri,
-                                              1,
-                                              0,
-                                              "Porthole",
-                                              [](QQmlEngine *engine, QJSEngine *scriptEngine) -> QObject * {
+//    qmlRegisterSingletonType<Porthole>(uri,
+//                                       1,
+//                                       0,
+//                                       "Porthole",
+//                                       [](QQmlEngine *engine, QJSEngine *scriptEngine) -> QObject * {
 
-        Q_UNUSED(engine)
-        Q_UNUSED(scriptEngine)
+//        Q_UNUSED(engine)
+//        Q_UNUSED(scriptEngine)
 
-        auto app = new Porthole(nullptr);
+//        auto app = new Porthole(nullptr);
 
-        return app;
-    });
+//        return app;
+//    });
+
+    auto porthole = new Porthole;
+    context->setContextProperty("Porthole", porthole);
 
     v->setSource(SailfishApp::pathTo("qml/harbour-porthole.qml"));
     v->show();

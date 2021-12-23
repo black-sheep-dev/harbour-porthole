@@ -13,34 +13,14 @@
 #include <QStandardPaths>
 #include <QUrlQuery>
 
-#include <Sailfish/Secrets/createcollectionrequest.h>
-#include <Sailfish/Secrets/deletecollectionrequest.h>
-#include <Sailfish/Secrets/deletesecretrequest.h>
-#include <Sailfish/Secrets/storesecretrequest.h>
-#include <Sailfish/Secrets/storedsecretrequest.h>
+#include "compressor.h"
 
-const QString PORTHOLE_COLLECTION_NAME            = QStringLiteral("porthole");
-const QString PORTHOLE_COLLECTION_NAME_DEBUG      = QStringLiteral("portholedebug");
+#include "crypto.h"
 
 Porthole::Porthole(QObject *parent) :
-#ifdef DISABLE_SAILFISH_SECRETS
     QObject(parent)
-#else
-    QObject(parent),
-    m_secretsIdentifier(Sailfish::Secrets::Secret::Identifier(
-                                QStringLiteral("secrets"),
-                                #ifdef QT_DEBUG
-                                    PORTHOLE_COLLECTION_NAME_DEBUG,
-                                #else
-                                    PORTHOLE_COLLECTION_NAME,
-                                #endif
-                                Sailfish::Secrets::SecretManager::DefaultEncryptedStoragePluginName))
-#endif
 {
     readSettings();
-#ifndef DISABLE_SAILFISH_SECRETS
-    loadCredentials();
-#endif
 
     connect(m_manager, &QNetworkAccessManager::finished, this, &Porthole::onRequestFinished);
 }
@@ -63,17 +43,11 @@ void Porthole::reset()
     setAccessToken(QString());
     setUrl(QString());
     saveSettings();
-#ifndef DISABLE_SAILFISH_SECRETS
-    deleteCollection();
-#endif
 }
 
 void Porthole::saveSettings()
 {
     writeSettings();
-#ifndef DISABLE_SAILFISH_SECRETS
-    storeCredentials();
-#endif
 }
 
 const QString &Porthole::accessToken() const
@@ -215,11 +189,7 @@ void Porthole::onRequestFinished(QNetworkReply *reply)
     }
 
     // read data
-    const QByteArray raw = reply->readAll();
-    QByteArray data = Compress::gunzip(raw);
-
-    if (data.isEmpty())
-        data = raw;
+    const QByteArray data = Compressor::gunzip(reply->readAll());
 
     reply->deleteLater();
 
@@ -250,124 +220,6 @@ void Porthole::onRequestFinished(QNetworkReply *reply)
     emit requestFinished(query, obj, info);
 }
 
-#ifndef DISABLE_SAILFISH_SECRETS
-void Porthole::createCollection()
-{
-
-
-    Sailfish::Secrets::CreateCollectionRequest createCollection;
-    createCollection.setManager(&m_secretManager);
-    createCollection.setCollectionLockType(Sailfish::Secrets::CreateCollectionRequest::DeviceLock);
-    createCollection.setDeviceLockUnlockSemantic(Sailfish::Secrets::SecretManager::DeviceLockKeepUnlocked);
-    createCollection.setUserInteractionMode(Sailfish::Secrets::SecretManager::SystemInteraction);
-    createCollection.setCollectionName(
-                                   #ifdef QT_DEBUG
-                                       PORTHOLE_COLLECTION_NAME_DEBUG
-                                   #else
-                                       PORTHOLE_COLLECTION_NAME
-                                   #endif
-                                       );
-    createCollection.setStoragePluginName(Sailfish::Secrets::SecretManager::DefaultEncryptedStoragePluginName);
-    createCollection.setEncryptionPluginName(Sailfish::Secrets::SecretManager::DefaultEncryptedStoragePluginName);
-    createCollection.startRequest();
-    createCollection.waitForFinished();
-
-#ifdef QT_DEBUG
-    qDebug() << createCollection.result().code();
-    qDebug() << createCollection.result().errorMessage();
-#endif
-
-
-}
-
-void Porthole::deleteCollection()
-{
-
-    Sailfish::Secrets::DeleteCollectionRequest deleteCollection;
-    deleteCollection.setManager(&m_secretManager);
-    deleteCollection.setCollectionName(
-                    #ifdef QT_DEBUG
-                        PORTHOLE_COLLECTION_NAME_DEBUG
-                    #else
-                        PORTHOLE_COLLECTION_NAME
-                    #endif
-                );
-    deleteCollection.setStoragePluginName(Sailfish::Secrets::SecretManager::DefaultEncryptedStoragePluginName);
-    deleteCollection.setUserInteractionMode(Sailfish::Secrets::SecretManager::SystemInteraction);
-    deleteCollection.startRequest();
-    deleteCollection.waitForFinished();
-
-
-#ifdef QT_DEBUG
-    qDebug() << deleteCollection.result().code();
-    qDebug() << deleteCollection.result().errorMessage();
-#endif
-
-}
-
-void Porthole::loadCredentials()
-{
-    auto fetchCode = new Sailfish::Secrets::StoredSecretRequest;
-
-    fetchCode->setManager(&m_secretManager);
-    fetchCode->setUserInteractionMode(Sailfish::Secrets::SecretManager::SystemInteraction);
-    fetchCode->setIdentifier(m_secretsIdentifier);
-
-    fetchCode->startRequest();
-    fetchCode->waitForFinished();
-
-#ifdef QT_DEBUG
-    qDebug() << QStringLiteral("CREDENTIALS LOADED");
-    qDebug() << fetchCode->result().code();
-    qDebug() << fetchCode->secret().data();
-
-    if (fetchCode->result().errorCode() > 0) {
-        qDebug() << fetchCode->result().errorCode();
-        qDebug() << fetchCode->result().errorMessage();
-    }
-#endif
-
-    if (fetchCode->result().code() != Sailfish::Secrets::Result::Succeeded) {
-        fetchCode->deleteLater();
-        return;
-    }
-
-    setAccessToken(fetchCode->secret().data());
-
-    fetchCode->deleteLater();
-}
-
-void Porthole::storeCredentials()
-{
-    if (m_accessToken.isEmpty())
-        return;
-
-    // reset and create
-    deleteCollection();
-    createCollection();
-
-    // store data in wallet
-    Sailfish::Secrets::Secret secret(m_secretsIdentifier);
-    secret.setData(m_accessToken.toUtf8());
-
-    Sailfish::Secrets::StoreSecretRequest storeCode;
-    storeCode.setManager(&m_secretManager);
-    storeCode.setSecretStorageType(Sailfish::Secrets::StoreSecretRequest::CollectionSecret);
-    storeCode.setUserInteractionMode(Sailfish::Secrets::SecretManager::SystemInteraction);
-    storeCode.setSecret(secret);
-    storeCode.startRequest();
-    storeCode.waitForFinished();
-
-    if (storeCode.result().errorCode())
-        return;
-
-    #ifdef QT_DEBUG
-        qDebug() << storeCode.result().code();
-        qDebug() << storeCode.result().errorMessage();
-    #endif
-}
-#endif
-
 void Porthole::readSettings()
 {
     QString path = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/org.nubecula/Porthole/porthole.conf";
@@ -379,11 +231,12 @@ void Porthole::readSettings()
     QSettings settings(path, QSettings::NativeFormat);
 
     settings.beginGroup(QStringLiteral("APP"));
-    setUrl(settings.value(QStringLiteral("url")).toString());
+    setUrl(settings.value(QStringLiteral("url")).toString()); 
 
-#ifdef DISABLE_SAILFISH_SECRETS
-    setAccessToken(settings.value(QStringLiteral("token")).toString());
-#endif
+    Crypto crypto(int(APP_SECRET));
+    const auto result = QString::fromUtf8(crypto.decrypt(QByteArray::fromBase64(settings.value(QStringLiteral("token")).toString().toUtf8()), true));
+    setAccessToken(result);
+
     settings.endGroup();
 }
 
@@ -394,8 +247,8 @@ void Porthole::writeSettings()
     settings.beginGroup(QStringLiteral("APP"));
     settings.setValue(QStringLiteral("url"), m_url);
 
-#ifdef DISABLE_SAILFISH_SECRETS
-    settings.setValue(QStringLiteral("token"), m_accessToken);
-#endif
+    Crypto crypto(int(APP_SECRET));
+    settings.setValue(QStringLiteral("token"), QString(crypto.encrypt(m_accessToken.toUtf8(), true).toBase64()));
+
     settings.endGroup();
 }
