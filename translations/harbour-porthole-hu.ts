@@ -193,7 +193,7 @@
     </message>
     <message id="id-refresh">
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>Frissítés</translation>
     </message>
     <message id="id-dashboard">
         <source>Dashboard</source>
@@ -229,7 +229,7 @@
     </message>
     <message id="id-connection-settings">
         <source>Connection Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapcsolat beállításai</translation>
     </message>
     <message id="id-url">
         <source>URL</source>
@@ -249,11 +249,11 @@
     </message>
     <message id="id-hide-search">
         <source>Hide Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Keresés elrejtése</translation>
     </message>
     <message id="id-search">
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Keresés</translation>
     </message>
     <message id="id-whitelist">
         <source>Whitelist</source>
@@ -265,7 +265,7 @@
     </message>
     <message id="id-delete">
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Törlés</translation>
     </message>
     <message id="id-delete-filter">
         <source>Delete filter</source>
@@ -342,7 +342,7 @@
     </message>
     <message id="id-software-version">
         <source>Software Versions</source>
-        <translation type="unfinished"></translation>
+        <translation>Szoftver verziója</translation>
     </message>
     <message id="id-core">
         <source>Core</source>
@@ -358,11 +358,11 @@
     </message>
     <message id="id-continue">
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>Tovább</translation>
     </message>
     <message id="id-back">
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Vissza</translation>
     </message>
     <message id="id-provide-connection-details">
         <source>You need to provide the connection details to your Pi-hole server.</source>
@@ -374,7 +374,7 @@
     </message>
     <message id="id-valid-url-required">
         <source>Valid URL required!</source>
-        <translation type="unfinished"></translation>
+        <translation>Érvényes port szükséges!</translation>
     </message>
     <message id="id-connection-to-porthole-failed">
         <source>Failed to connect to Pi-hole server!</source>
