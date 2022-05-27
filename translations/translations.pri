@@ -1,12 +1,6 @@
 TRANSLATIONS += \
     translations/harbour-porthole.ts \
-    translations/harbour-porthole-de.ts \
-    translations/harbour-porthole-fr.ts \
-    translations/harbour-porthole-pl.ts \
-    translations/harbour-porthole-sk.ts \
-    translations/harbour-porthole-sv.ts \
-    translations/harbour-porthole-zh_CN.ts
-
+    translations/harbour-porthole-de.ts
 
 qm.input    = TRANSLATIONS
 qm.output   = translations/${QMAKE_FILE_BASE}.qm

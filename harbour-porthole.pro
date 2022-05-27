@@ -66,6 +66,4 @@ HEADERS += \
     src/models/sortmodel.h \
     src/porthole.h
 
-include(secret.pri)
 include(extern/sailfishos-utils/compressor/compressor.pri)
-include(extern/sailfishos-utils/crypto/crypto.pri)
