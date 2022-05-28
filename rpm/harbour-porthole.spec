@@ -9,7 +9,7 @@ Name:       harbour-porthole
 # << macros
 
 Summary:    Porthole
-Version:    0.3.0
+Version:    0.3.1
 Release:    1
 Group:      Qt/Qt
 License:    MIT
