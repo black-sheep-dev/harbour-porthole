@@ -15,8 +15,6 @@
 
 #include "compressor.h"
 
-#include "crypto.h"
-
 Porthole::Porthole(QObject *parent) :
     QObject(parent)
 {
@@ -231,11 +229,8 @@ void Porthole::readSettings()
     QSettings settings(path, QSettings::NativeFormat);
 
     settings.beginGroup(QStringLiteral("APP"));
-    setUrl(settings.value(QStringLiteral("url")).toString()); 
-
-    Crypto crypto(QString(APP_SECRET).toUInt());
-    const auto result = QString::fromUtf8(crypto.decrypt(QByteArray::fromBase64(settings.value(QStringLiteral("token")).toString().toUtf8()), true));
-    setAccessToken(result);
+    setUrl(settings.value(QStringLiteral("url")).toString());
+    setAccessToken(settings.value(QStringLiteral("token")).toString());
 
     settings.endGroup();
 }
@@ -246,9 +241,7 @@ void Porthole::writeSettings()
 
     settings.beginGroup(QStringLiteral("APP"));
     settings.setValue(QStringLiteral("url"), m_url);
-
-    Crypto crypto(QString(APP_SECRET).toUInt());
-    settings.setValue(QStringLiteral("token"), QString(crypto.encrypt(m_accessToken.toUtf8(), true).toBase64()));
+    settings.setValue(QStringLiteral("token"), m_url);
 
     settings.endGroup();
 }

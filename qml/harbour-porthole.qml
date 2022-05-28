@@ -1,6 +1,9 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import Nemo.Notifications 1.0
+import Sailfish.Secrets 1.0 as Secrets
+import Sailfish.Crypto 1.0 as Crypto
+
 import "pages"
 
 import org.nubecula.harbour.porthole 1.0

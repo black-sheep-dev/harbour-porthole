@@ -13,6 +13,24 @@ Sources:
 - '%{name}-%{version}.tar.bz2'
 Description: |
   Porthole is a Sailfish OS application to control a Pi-hole server
+
+    %if "%{?vendor}" == "chum"
+    PackageName: Porthole
+    Type: desktop-application
+    Categories:
+        - Utility
+    Custom:
+        DescriptionMD: https://github.com/black-sheep-dev/harbour-porthole/raw/master/README.md
+        Repo: https://github.com/black-sheep-dev/harbour-porthole/
+    Icon: https://raw.githubusercontent.com/black-sheep-dev/harbour-porthole/master/icons/172x172/harbour-porthole.png
+    Screenshots:
+        - https://github.com/black-sheep-dev/harbour-porthole/raw/master/metadata/screenshot01.png
+        - https://github.com/black-sheep-dev/harbour-porthole/raw/master/metadata/screenshot02.png
+        - https://github.com/black-sheep-dev/harbour-porthole/raw/master/metadata/screenshot03.png
+    Url:
+        Donation: https://www.paypal.com/paypalme/nubecula/1
+    %endif
+
 Builder: qmake5
 
 # This section specifies build dependencies that are resolved using pkgconfig.
@@ -31,7 +49,6 @@ PkgConfigBR:
 # Runtime dependencies which are not automatically detected
 Requires:
   - sailfishsilica-qt5 >= 0.10.9 
-  - sailfishsecretsdaemon-secretsplugins-default
   - nemo-qml-plugin-dbus-qt5
   - nemo-qml-plugin-notifications-qt5
 
