@@ -1,11 +1,11 @@
 [Desktop Entry]
 Type=Application
 Icon=harbour-porthole
-Exec=sailjail -p harbour-porthole.desktop /usr/bin/harbour-porthole
+X-Nemo-Application-Type=silica-qt5
+Exec=harbour-porthole
 Name=Porthole
 
 [X-Sailjail]
 OrganizationName=org.nubecula
 ApplicationName=Porthole
 Permissions=Internet
-ExecDBus=/usr/bin/harbour-porthole -prestart
