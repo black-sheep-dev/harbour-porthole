@@ -17,8 +17,6 @@ DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 TARGET = harbour-porthole
 DEFINES += APP_TARGET=\\\"$$TARGET\\\"
 
-QT += dbus
-
 CONFIG += link_pkgconfig sailfishapp
 PKGCONFIG += nemonotifications-qt5
 
