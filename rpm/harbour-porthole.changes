@@ -1,3 +1,7 @@
+* Sat May 28 2021 Samuel Kron <blacksheep@nubecula.org> 0.3.0-1
+- Removed crypto implementation
+- Cleanup
+
 * Thu Dec 23 2021 Samuel Kron <blacksheep@nubecula.org> 0.2.1-1
 - Replaced Sailfish Secrets with own simple crypto implementation
 
