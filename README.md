@@ -4,9 +4,11 @@ Porthole is a Sailfish OS application to control a Pi-hole server.
 
 >![](icons/128x128/harbour-porthole.png)
 
-## Version compatibility
-Starting with Version 0.2.0 the application needs at least SailfishOS 4.2.
-If you use an older version of SailfishOS use app version 0.1.3 instead
+![](https://www.codefactor.io/repository/github/black-sheep-dev/harbour-porthole/badge?style=plastic)
+
+[![](https://github.com/black-sheep-dev/harbour-porthole/actions/workflows/main.yml/badge.svg)](https://github.com/black-sheep-dev/harbour-porthole/actions/workflows/main.yml)
+
+![](http://weblate.nubecula.org/widgets/harbour-porthole/-/harbour-porthole/svg-badge.svg)
 
 ## Authentication with Access Token
 To authenticate with Pi-hole server an access token is necessary. You can find it in the config files "/etc/pihole/setupVars.conf". Look for the WEBPASSWORD entry.
