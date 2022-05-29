@@ -432,5 +432,14 @@
         <source>Failed to delete filter</source>
         <translation>Failed to delete filter</translation>
     </message>
+    <message id="id-connection">
+        <source>Connection</source>
+        <translation>Connection</translation>
+    </message>
+    <message id="id-connection-desc">
+        <source>Show connection credentials</source>
+        <oldsource>Show server info</oldsource>
+        <translation>Show connection credentials</translation>
+    </message>
 </context>
 </TS>

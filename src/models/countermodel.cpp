@@ -1,5 +1,7 @@
 #include "countermodel.h"
 
+#include <QDebug>
+
 CounterModel::CounterModel(QObject *parent) :
     QAbstractListModel(parent)
 {
@@ -13,6 +15,8 @@ CounterModel::~CounterModel()
 
 void CounterModel::setItems(const QJsonObject &obj)
 {
+    qDebug() << obj;
+
     beginResetModel();
     for (const auto &key : obj.keys()) {
         CounterItem item;

@@ -28,6 +28,15 @@ Page {
                 type: 2
             }
             ListElement {
+                //% "Connection"
+                title: qsTrId("id-connection");
+                //% "Show connection credentials"
+                description: qsTrId("id-connection-desc")
+                icon: "image://theme/icon-m-mobile-network"
+                page: "SettingsConnectionPage.qml"
+                type: 0
+            }
+            ListElement {
                 //% "Server Info"
                 title: qsTrId("id-server-info");
                 //% "Show server info"

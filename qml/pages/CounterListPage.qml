@@ -88,8 +88,11 @@ Page {
     function refresh() {
         switch (page.type) {
         case 0:
-        case 1:
             Porthole.sendRequest("topItems", true)
+            break;
+
+        case 1:
+            Porthole.sendRequest("topItemsBlocked", true)
             break;
 
         case 2:

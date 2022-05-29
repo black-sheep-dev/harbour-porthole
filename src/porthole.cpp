@@ -230,7 +230,10 @@ void Porthole::readSettings()
 
     settings.beginGroup(QStringLiteral("APP"));
     setUrl(settings.value(QStringLiteral("url")).toString());
-    setAccessToken(settings.value(QStringLiteral("token")).toString());
+
+    // workaround of nasty bug in version 0.3.1
+    const QString token = settings.value(QStringLiteral("token")).toString();
+    setAccessToken(token.startsWith("http") ? "" : token);
 
     settings.endGroup();
 }
@@ -241,7 +244,7 @@ void Porthole::writeSettings()
 
     settings.beginGroup(QStringLiteral("APP"));
     settings.setValue(QStringLiteral("url"), m_url);
-    settings.setValue(QStringLiteral("token"), m_url);
+    settings.setValue(QStringLiteral("token"), m_accessToken);
 
     settings.endGroup();
 }
