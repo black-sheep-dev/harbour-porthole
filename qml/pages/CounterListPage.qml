@@ -58,7 +58,7 @@ Page {
                     }
                     Label {
                         //% "%n Request(s)"
-                        text: qsTrId("id-requests", "0", model.count)
+                        text: qsTrId("id-requests", model.count)
                         color: Theme.secondaryColor
                         font.pixelSize: Theme.fontSizeSmall
                     }
@@ -88,12 +88,9 @@ Page {
     function refresh() {
         switch (page.type) {
         case 0:
-            Porthole.sendRequest("topItems", true)
-            break;
-
         case 1:
-            Porthole.sendRequest("topItemsBlocked", true)
-            break;
+            Porthole.sendRequest("topItems", true)
+            break; 
 
         case 2:
             Porthole.sendRequest("topClients", true)
