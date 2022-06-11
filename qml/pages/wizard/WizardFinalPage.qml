@@ -7,6 +7,10 @@ Dialog {
     id: dialog
     allowedOrientations: Orientation.Portrait
 
+    acceptDestination: Qt.resolvedUrl("../MainPage.qml")
+    acceptDestinationAction: PageStackAction.Replace
+    acceptDestinationReplaceTarget: null
+
     DialogHeader {
         id: header
         //% "Complete"
@@ -32,10 +36,6 @@ Dialog {
         }
     }
 
-    onAccepted: {
-        Porthole.saveSettings()
-        pageStack.clear()
-        pageStack.push(Qt.resolvedUrl("../MainPage.qml"))
-    }
+    onAccepted: Porthole.saveSettings()
 }
 
