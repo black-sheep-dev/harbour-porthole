@@ -45,15 +45,15 @@ Page {
                 page: "SettingsServerInfoPage.qml"
                 type: 0
             }
-            ListElement {
-                //% "About"
-                title: qsTrId("id-about");
-                //% "Infos about Porthole"
-                description: qsTrId("id-about-desc")
-                icon: "image://theme/icon-m-about"
-                page: "../AboutPage.qml"
-                type: 0
-            }
+//            ListElement {
+//                //% "About"
+//                title: qsTrId("id-about");
+//                //% "Infos about Porthole"
+//                description: qsTrId("id-about-desc")
+//                icon: "image://theme/icon-m-about"
+//                page: "../AboutPage.qml"
+//                type: 0
+//            }
         }
 
         anchors.fill: parent

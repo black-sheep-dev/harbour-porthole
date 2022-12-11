@@ -1,7 +1,11 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
+import "../."
+
 Page {
+    readonly property string appId: "harbour-porthole"
+
     id: page
 
     allowedOrientations: Orientation.All
@@ -13,7 +17,7 @@ Page {
         Column {
             id: column
             width:parent.width
-            spacing: Theme.paddingMedium
+            spacing: Theme.paddingLarge
 
             PageHeader {
                 //% "About"
@@ -22,14 +26,11 @@ Page {
 
             Image {
                 id: logo
-                source: "/usr/share/icons/hicolor/512x512/apps/harbour-porthole.png"
+                source: "/usr/share/icons/hicolor/512x512/apps/" + appId + ".png"
                 smooth: true
-                height: width
+                height: parent.width / 2
                 width: parent.width / 2
-                sourceSize.width: 512
-                sourceSize.height: 512
                 anchors.horizontalCenter: parent.horizontalCenter
-                opacity: 0.7
             }
 
             Label {
@@ -45,12 +46,7 @@ Page {
             Label {
                 width: parent.width
                 x : Theme.horizontalPageMargin
-                text: Qt.application.version
-            }
-
-            Item {
-                height: Theme.paddingMedium
-                width: 1
+                text: Global.appVersion
             }
 
             Label {
@@ -61,6 +57,81 @@ Page {
 
                 //% "Porthole is a Sailfish OS application to control a Pi-hole server."
                 text: qsTrId("id-about-text")
+            }
+
+            SectionHeader {
+                //% "Social Media"
+                text: qsTrId("id-social-media")
+            }
+
+            BackgroundItem {
+                width: parent.width
+                height: Theme.itemSizeMedium
+                contentHeight: Theme.itemSizeMedium
+                Row{
+                    width:parent.width - 2 * x
+                    height: parent.height
+                    x:Theme.horizontalPageMargin
+                    spacing:Theme.paddingLarge
+
+                    Image {
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: parent.height * 0.8
+                        height: width
+                        source: "/usr/share/harbour-" + Qt.application.name + "/icons/mastodon.svg"
+                    }
+
+                    Label{
+                        width: parent.width - parent.height - parent.spacing
+                        anchors.verticalCenter: parent.verticalCenter
+                        wrapMode: Text.WrapAnywhere
+                        font.pixelSize: Theme.fontSizeSmall
+
+                        text: "@" + Qt.application.name + "@social.nubecula.org"
+                        color: parent.parent.pressed ? Theme.highlightColor : Theme.primaryColor
+
+                    }
+                }
+                onClicked: {
+                    //% "Copied to clipboard"
+                    notification.show(qsTrId("id-copied-to-clipboard"))
+                    Clipboard.text = "@" + Qt.application.name + "@social.nubecula.org"
+                }
+            }
+
+            BackgroundItem {
+                width: parent.width
+                height: Theme.itemSizeMedium
+                contentHeight: Theme.itemSizeMedium
+                Row{
+                    width:parent.width - 2 * x
+                    height: parent.height
+                    x:Theme.horizontalPageMargin
+                    spacing:Theme.paddingLarge
+
+                    Image {
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: parent.height * 0.8
+                        height: width
+                        source: "/usr/share/harbour-" + Qt.application.name + "/icons/mastodon.svg"
+                    }
+
+                    Label{
+                        width: parent.width - parent.height - parent.spacing
+                        anchors.verticalCenter: parent.verticalCenter
+                        wrapMode: Text.WrapAnywhere
+                        font.pixelSize: Theme.fontSizeSmall
+
+                        text: "@blacksheep@social.nubecula.org"
+                        color: parent.parent.pressed ? Theme.highlightColor : Theme.primaryColor
+
+                    }
+                }
+                onClicked: {
+                    //% "Copied to clipboard"
+                    notification.show(qsTrId("id-copied-to-clipboard"))
+                    Clipboard.text = "@blacksheep@social.nubecula.org"
+                }
             }
 
             SectionHeader {
@@ -88,7 +159,7 @@ Page {
                     spacing:Theme.paddingMedium
 
                     Image {
-                        width: parent.height
+                        width: parent.height * 0.8
                         height: width
                         fillMode: Image.PreserveAspectFit
                         anchors.verticalCenter: parent.verticalCenter
@@ -118,7 +189,7 @@ Page {
                 source: "http://weblate.nubecula.org/widgets/harbour-porthole/-/harbour-porthole/multi-auto.svg"
             }
 
-            SectionHeader{
+            SectionHeader {
                 //% "Sources"
                 text: qsTrId("id-sources")
             }
@@ -127,17 +198,16 @@ Page {
                 width: parent.width
                 height: Theme.itemSizeMedium
                 Row{
-                    x : Theme.horizontalPageMargin
-                    width: parent.width - 2*x
+                    width:parent.width - 2 * x
                     height: parent.height
-                    spacing:Theme.paddingMedium
+                    x:Theme.horizontalPageMargin
+                    spacing:Theme.paddingLarge
 
                     Image {
-                        width: parent.height
-                        height: width
-                        fillMode: Image.PreserveAspectFit
                         anchors.verticalCenter: parent.verticalCenter
-                        source: "qrc:///icons/git"
+                        width: parent.height * 0.8
+                        height: width
+                        source: "/usr/share/harbour-" + Qt.application.name + "/icons/github.svg"
                     }
 
                     Label{
@@ -146,12 +216,12 @@ Page {
                         wrapMode: Text.WrapAnywhere
                         font.pixelSize: Theme.fontSizeSmall
 
-                        text: "https://github.com/black-sheep-dev/harbour-porthole"
+                        text: "https://github.com/black-sheep-dev/harbour-" + Qt.application.name
                         color: parent.parent.pressed ? Theme.highlightColor : Theme.primaryColor
 
                     }
                 }
-                onClicked: Qt.openUrlExternally("https://github.com/black-sheep-dev/harbour-porthole")
+                onClicked: Qt.openUrlExternally("https://github.com/black-sheep-dev/"  + appId)
             }
 
             SectionHeader{
@@ -165,6 +235,7 @@ Page {
 
                 wrapMode: Text.Wrap
                 font.pixelSize: Theme.fontSizeSmall
+
                 //% "If you like my work why not buy me a beer?"
                 text: qsTrId("id-buy-beer")
             }
@@ -177,14 +248,14 @@ Page {
                     x: Theme.horizontalPageMargin
                     width: parent.width - 2*x
                     height: parent.height
-                    spacing:Theme.paddingMedium
+                    spacing:Theme.paddingLarge
 
                     Image {
-                        width: parent.height
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: parent.height * 0.8
                         height: width
                         fillMode: Image.PreserveAspectFit
-                        anchors.verticalCenter: parent.verticalCenter
-                        source: "qrc:///icons/paypal"
+                        source: "/usr/share/harbour-" + Qt.application.name + "/icons/paypal.svg"
                     }
                     Label{
                         width: parent.width - parent.height - parent.spacing
@@ -208,14 +279,14 @@ Page {
                     width: parent.width - 2*x
                     height: parent.height
 
-                    spacing:Theme.paddingMedium
+                    spacing:Theme.paddingLarge
 
                     Image {
-                        width: parent.height
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: parent.height * 0.8
                         height: width
                         fillMode: Image.PreserveAspectFit
-                        anchors.verticalCenter: parent.verticalCenter
-                        source: "qrc:///icons/liberpay"
+                        source: "/usr/share/harbour-" + Qt.application.name + "/icons/liberpay.svg"
                     }
                     Label{
                         width: parent.width - parent.height - parent.spacing
@@ -232,7 +303,7 @@ Page {
 
             Item {
                 width: 1
-                height: Theme.paddingSmall
+                height: Theme.paddingLarge
             }
         }
     }

@@ -1,12 +1,13 @@
 Name: harbour-porthole
 Summary: Porthole
-Version: 0.3.2
+Version: 0.4.0
 Release: 1
 # The contents of the Group field should be one of the groups listed here:
 # https://github.com/mer-tools/spectacle/blob/master/data/GROUPS
 Group: Qt/Qt
 URL: https://github.com/black-sheep-dev/harbour-porthole
-License: MIT
+BuildArch: noarch
+License: GPLv2
 # This must be generated before uploading a package to a remote build service.
 # Usually this line does not need to be modified.
 Sources:
@@ -14,29 +15,29 @@ Sources:
 Description: |
   Porthole is a Sailfish OS application to control a Pi-hole server
 
-    %if "%{?vendor}" == "chum"
-    PackageName: Porthole
-    Type: desktop-application
-    Categories:
-        - Utility
-    Custom:
-        DescriptionMD: https://github.com/black-sheep-dev/harbour-porthole/raw/master/README.md
-        Repo: https://github.com/black-sheep-dev/harbour-porthole/
-    Icon: https://raw.githubusercontent.com/black-sheep-dev/harbour-porthole/master/icons/172x172/harbour-porthole.png
-    Screenshots:
-        - https://github.com/black-sheep-dev/harbour-porthole/raw/master/metadata/screenshot01.png
-        - https://github.com/black-sheep-dev/harbour-porthole/raw/master/metadata/screenshot02.png
-        - https://github.com/black-sheep-dev/harbour-porthole/raw/master/metadata/screenshot03.png
-    Url:
-        Donation: https://www.paypal.com/paypalme/nubecula/1
-    %endif
+  %if "%{?vendor}" == "chum"
+  PackageName: Porthole
+  Type: desktop-application
+  Categories:
+      - Utility
+  Custom:
+      DescriptionMD: https://github.com/black-sheep-dev/harbour-porthole/raw/master/README.md
+      Repo: https://github.com/black-sheep-dev/harbour-porthole/
+  Icon: https://raw.githubusercontent.com/black-sheep-dev/harbour-porthole/master/icons/172x172/harbour-porthole.png
+  Screenshots:
+      - https://github.com/black-sheep-dev/harbour-porthole/raw/master/metadata/screenshot01.png
+      - https://github.com/black-sheep-dev/harbour-porthole/raw/master/metadata/screenshot02.png
+      - https://github.com/black-sheep-dev/harbour-porthole/raw/master/metadata/screenshot03.png
+  Url:
+      Donation: https://www.paypal.com/paypalme/nubecula/1
+  %endif
 
 Builder: qmake5
 
 # This section specifies build dependencies that are resolved using pkgconfig.
 # This is the preferred way of specifying build dependencies for your package.
 PkgConfigBR:
-  - sailfishapp >= 1.0.2
+  - sailfishapp >= 1.0.3
   - Qt5Core
   - Qt5Qml
   - Qt5Quick
@@ -48,12 +49,12 @@ PkgBR:
 
 # Runtime dependencies which are not automatically detected
 Requires:
-  - sailfishsilica-qt5 >= 0.10.9 
-  - nemo-qml-plugin-notifications-qt5
+  - sailfishsilica-qt5 >= 0.10.9
+  - libsailfishapp-launcher
 
 # All installed files
 Files:
-  - '%{_bindir}'
+  - '%defattr(0644,root,root,-)'
   - '%{_datadir}/%{name}'
   - '%{_datadir}/applications/%{name}.desktop'
   - '%{_datadir}/icons/hicolor/*/apps/%{name}.png'

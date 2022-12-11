@@ -1,10 +1,11 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-import org.nubecula.harbour.porthole 1.0
+import "../../."
 
 Page {
     property bool busy: false
+    property var items: []
     property int type: 1
 
     id: page
@@ -17,7 +18,7 @@ Page {
         running: busy
     }
 
-    SilicaFlickable {
+    SilicaListView {
         PullDownMenu {
             MenuItem {
                 //% "Add"
@@ -48,12 +49,17 @@ Page {
                             type = "3"
                         }
 
-                        Porthole.sendPostRequest(query,
-                                                 {
-                                                     type: type,
-                                                     comment: dialog.comment
-                                                 },
-                                                 -1)
+                        var data = "type=" + type + "&comment=" + dialog.comment
+
+                        Api.requestPost(query, data, function (data, status) {
+                            if (status !== 200) {
+                                //% "Failed to add filter"
+                                notification.show(qsTrId("id-error-failed-to-add-filter"))
+                                return
+                            }
+
+                            refresh()
+                       })
                     })
                 }
             }
@@ -62,235 +68,173 @@ Page {
                 text: qsTrId("id-refresh")
                 onClicked: refresh()
             }
-            MenuItem {
-                text: listView.showSearch ?
-                          //% "Hide Search"
-                          qsTrId("id-hide-search") :
-                          //% "Search"
-                          qsTrId("id-search")
-                onClicked: listView.showSearch = !listView.showSearch
-            }
         }
 
+        id: listView
         anchors.fill: parent
 
-        Column {
-            id: headerColumn
-            width: parent.width
-
-            PageHeader {
-                title: type === 1 ?
-                           //% "Whitelist"
-                           qsTrId("id-whitelist") :
-                           //% "Blacklist"
-                           qsTrId("id-blacklist")
-            }
-
-            SearchField {
-                id: searchField
-                width: parent.width
-                height: listView.showSearch ? implicitHeight : 0
-                opacity: listView.showSearch ? 1 : 0
-                inputMethodHints: Qt.ImhPreferLowercase
-                onTextChanged: {
-                    sortModel.setFilterFixedString(text)
-                }
-
-                EnterKey.onClicked: focus = false
-
-                Connections {
-                    target: listView
-                    onShowSearchChanged: {
-                        searchField.forceActiveFocus()
-                    }
-                }
-
-                Behavior on height {
-                    NumberAnimation { duration: 300 }
-                }
-                Behavior on opacity {
-                    NumberAnimation { duration: 300 }
-                }
-            }
+        header: PageHeader {
+            title: type === 1 ?
+                       //% "Whitelist"
+                       qsTrId("id-whitelist") :
+                       //% "Blacklist"
+                       qsTrId("id-blacklist")
         }
 
-        SilicaListView {
-            property bool showSearch: false
+        clip: true
 
-            id: listView
+        model: items
 
-            anchors.top: headerColumn.bottom
-            anchors.bottom: parent.bottom
+        delegate: ListItem {
+            id: delegate
             width: parent.width
+            contentHeight: Theme.itemSizeMedium
 
-            clip: true
+            menu: ContextMenu {
+                MenuItem {
+                    //% "Delete"
+                    text: qsTrId("id-delete")
+                    //% "Delete filter"
+                    onClicked: delegate.remorseAction(qsTrId("id-delete-filter"), function() {
+                        var list
 
-            model: SortModel {
-                id: sortModel
-                filterRole: FilterListModel.DomainRole
-                filterCaseSensitivity: Qt.CaseInsensitive
-                sortRole: FilterListModel.DomainRole
-                sortCaseSensitivity: Qt.CaseInsensitive
-                sourceModel: FilterListModel {
-                    id: filterModel
-                }
-            }
+                        switch (modelData.type) {
+                        case 0:
+                            list = "white"
+                            break;
 
-            delegate: ListItem {
-                id: delegate
-                width: parent.width
-                contentHeight: Theme.itemSizeMedium
+                        case 1:
+                            list = "black"
+                            break;
 
-                menu: ContextMenu {
-                    MenuItem {
-                        //% "Delete"
-                        text: qsTrId("id-delete")
-                        //% "Delete filter"
-                        onClicked: delegate.remorseAction(qsTrId("id-delete-filter"), function() {
-                            var list
+                        case 2:
+                            list = "regex_white"
+                            break;
 
-                            switch (model.type) {
-                            case 0:
-                                list = "white"
-                                break;
+                        case 3:
+                            list = "regex_black"
+                            break;
 
-                            case 1:
-                                list = "black"
-                                break;
+                        default:
+                            return;
+                        }
 
-                            case 2:
-                                list = "regex_white"
-                                break;
-
-                            case 3:
-                                list = "regex_black"
-                                break;
-
-                            default:
-                                return;
+                        Api.requestGet("list=" + list + "&sub=" + modelData.domain, function (data, status) {
+                            if (status !== 200) {
+                                //% "Failed to delete filter"
+                                notification.show(qsTrId("id-error-failed-to-delete-filter"))
+                                return
                             }
 
-                            Porthole.sendRequest("list=" + list + "&sub=" + model.domain, true, model.id)
+                            refresh()
                         })
-                    }
-//                    MenuItem {
-//                        text: model.enabled ? qsTr("Disable") : qsTr("Enable")
-//                        delegate.remorseAction(qsTr(model.enabled ? qsTr("Disable filter") : qsTr("Enable filter")), function() { })
-//                    }
+                    })
                 }
+            }
 
-                Row {
-                    x: Theme.horizontalPageMargin
-                    width: parent.width - 2 * x
-                    height: parent.height
+            Row {
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2 * x
+                height: parent.height
+                anchors.verticalCenter: parent.verticalCenter
+                spacing: Theme.paddingMedium
+
+                Image {
+                    id: itemIcon
+                    source: modelData.enabled ? "image://theme/icon-m-acknowledge" : "image://theme/icon-m-clear"
                     anchors.verticalCenter: parent.verticalCenter
-                    spacing: Theme.paddingMedium
+                }
 
-                    Image {
-                        id: itemIcon
-                        source: model.enabled ? "image://theme/icon-m-acknowledge" : "image://theme/icon-m-clear"
-                        anchors.verticalCenter: parent.verticalCenter
+                Item {
+                    width:Theme.paddingMedium
+                    height:1
+                }
+
+                Column {
+                    id: data
+                    width: parent.width - itemIcon.width - parent.spacing
+                    anchors.verticalCenter: itemIcon.verticalCenter
+                    Label {
+                        id: text
+                        width: parent.width
+                        text: modelData.domain
+                        color: pressed ? Theme.secondaryHighlightColor:Theme.highlightColor
+                        font.pixelSize: Theme.fontSizeMedium
                     }
-
-                    Item {
-                        width:Theme.paddingMedium
-                        height:1
-                    }
-
-                    Column {
-                        id: data
-                        width: parent.width - itemIcon.width - parent.spacing
-                        anchors.verticalCenter: itemIcon.verticalCenter
-                        Label {
-                            id: text
-                            width: parent.width
-                            text: model.domain
-                            color: pressed ? Theme.secondaryHighlightColor:Theme.highlightColor
-                            font.pixelSize: Theme.fontSizeMedium
-                        }
-                        Label {
-                            text: model.comment
-                            color: Theme.secondaryColor
-                            font.pixelSize: Theme.fontSizeSmall
-                        }
+                    Label {
+                        text: modelData.comment
+                        color: Theme.secondaryColor
+                        font.pixelSize: Theme.fontSizeSmall
                     }
                 }
             }
-
-            ViewPlaceholder {
-                enabled: listView.count === 0 && !page.busy
-                //% "No filters available"
-                text: qsTrId("id-no-filters")
-                //% "Pull down to add one"
-                hintText: qsTrId("id-filter-add-info")
-            }
-
-            VerticalScrollDecorator {}
         }
+
+        ViewPlaceholder {
+            enabled: listView.count === 0 && !page.busy
+            //% "No filters available"
+            text: qsTrId("id-no-filters")
+            //% "Pull down to add one"
+            hintText: qsTrId("id-filter-add-info")
+        }
+
+        VerticalScrollDecorator {}
     }
 
     function refresh() {
-        filterModel.reset()
-
         page.busy = true
 
         switch (page.type) {
         case 1:
-            Porthole.sendRequest("list=white", true)
-            Porthole.sendRequest("list=regex_white", true)
+            items = []
+            Api.requestGet("list=white", function (data, status) {
+                page.busy = false
+                if (status !== 200) {
+                    //% "Failed to get whitelist"
+                    notification.show(qsTrId("id-error-failed-to-get-whitelist"))
+                    return
+                }
+
+                items = items.concat(data.data)
+            })
+            Api.requestGet("list=regex_white", function (data, status) {
+                page.busy = false
+                if (status !== 200) {
+                    //% "Failed to get regex whitelist"
+                    notification.show(qsTrId("id-error-failed-to-get-regex-whitelist"))
+                    return
+                }
+
+                items = items.concat(data.data)
+            })
             break;
 
         case 2:
-            Porthole.sendRequest("list=black", true)
-            Porthole.sendRequest("list=regex_black", true)
+            items = []
+            Api.requestGet("list=black", function (data, status) {
+                page.busy = false
+                if (status !== 200) {
+                    //% "Failed to get blacklist"
+                    notification.show(qsTrId("id-error-failed-to-get-blacklist"))
+                    return
+                }
+
+                items = items.concat(data.data)
+            })
+            Api.requestGet("list=regex_black", function (data, status) {
+                page.busy = false
+                if (status !== 200) {
+                    //% "Failed to get regex blacklist"
+                    notification.show(qsTrId("id-error-failed-to-get-regex-blacklist"))
+                    return
+                }
+
+                items = items.concat(data.data)
+            })
             break;
 
         default:
             break;
-        }
-    }
-
-    Connections {
-        target: Porthole
-        onRequestFailed: {
-            if (query.indexOf("add=") >= 0) {
-                //% "Failed to add filter"
-                notification.show(qsTrId("id-add-filter-failed"))
-                return
-            }
-
-            if (query.indexOf("sub=") >= 0) {
-                //% "Failed to delete filter"
-                notification.show(qsTrId("id-del-filter-failed"))
-                return
-            }
-
-            if (page.type === 1 && (query.indexOf("list=white") >= 0 || query.indexOf("list=regex_white") >= 0)) {
-                page.busy = false
-            } else if (page.type === 2 && (query.indexOf("list=black") >= 0 || query.indexOf("list=regex_black") >= 0)) {
-                page.busy = false
-            }
-        }
-        onRequestFinished: {
-            if (query.indexOf("add=") >= 0) {
-                if (data.success) refresh()
-                return
-            }
-
-            if (query.indexOf("sub=") >= 0) {
-                if (data.success) filterModel.removeItem(info)
-                return
-            }
-
-            if (page.type === 1 && (query.indexOf("list=white") >= 0 || query.indexOf("list=regex_white") >= 0)) {
-                filterModel.addItems(data)
-                sortModel.sortModel(Qt.AscendingOrder)
-                page.busy = false
-            } else if (page.type === 2 && (query.indexOf("list=black") >= 0 || query.indexOf("list=regex_black") >= 0)) {
-                filterModel.addItems(data)
-                sortModel.sortModel(Qt.AscendingOrder)
-                page.busy = false
-            }
         }
     }
 

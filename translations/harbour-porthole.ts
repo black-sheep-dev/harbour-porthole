@@ -69,35 +69,35 @@
     </message>
     <message id="id-error-connection-refused">
         <source>Connection refused</source>
-        <translation>Connection refused</translation>
+        <translation type="vanished">Connection refused</translation>
     </message>
     <message id="id-error-host-not-found">
         <source>Host not found</source>
-        <translation>Host not found</translation>
+        <translation type="vanished">Host not found</translation>
     </message>
     <message id="id-error-connection-timed-out">
         <source>Connection timed out</source>
-        <translation>Connection timed out</translation>
+        <translation type="vanished">Connection timed out</translation>
     </message>
     <message id="id-error-ssl-handshake-failed">
         <source>Ssl handshake failed</source>
-        <translation>Ssl handshake failed</translation>
+        <translation type="vanished">Ssl handshake failed</translation>
     </message>
     <message id="id-error-access-denied">
         <source>Access denied</source>
-        <translation>Access denied</translation>
+        <translation type="vanished">Access denied</translation>
     </message>
     <message id="id-error-not-found">
         <source>Not found</source>
-        <translation>Not found</translation>
+        <translation type="vanished">Not found</translation>
     </message>
     <message id="id-error-internal-server-error">
         <source>Internal server error</source>
-        <translation>Internal server error</translation>
+        <translation type="vanished">Internal server error</translation>
     </message>
     <message id="id-error-unkown-connection-error">
         <source>Unkown connection error</source>
-        <translation>Unkown connection error</translation>
+        <translation type="vanished">Unkown connection error</translation>
     </message>
     <message id="id-about">
         <source>About</source>
@@ -110,7 +110,7 @@
     <message id="id-about-desc">
         <source>Infos about Porthole</source>
         <oldsource>Porthole is a Sailfish OS application to control a Pi-hole server.</oldsource>
-        <translation>Infos about Porthole</translation>
+        <translation type="vanished">Infos about Porthole</translation>
     </message>
     <message id="id-translations">
         <source>Translations</source>
@@ -225,7 +225,7 @@
     </message>
     <message id="id-reset-application">
         <source>Reset application</source>
-        <translation>Reset application</translation>
+        <translation type="vanished">Reset application</translation>
     </message>
     <message id="id-connection-settings">
         <source>Connection Settings</source>
@@ -249,11 +249,11 @@
     </message>
     <message id="id-hide-search">
         <source>Hide Search</source>
-        <translation>Hide Search</translation>
+        <translation type="vanished">Hide Search</translation>
     </message>
     <message id="id-search">
         <source>Search</source>
-        <translation>Search</translation>
+        <translation type="vanished">Search</translation>
     </message>
     <message id="id-whitelist">
         <source>Whitelist</source>
@@ -426,11 +426,11 @@
     </message>
     <message id="id-add-filter-failed">
         <source>Failed to add filter</source>
-        <translation>Failed to add filter</translation>
+        <translation type="vanished">Failed to add filter</translation>
     </message>
     <message id="id-del-filter-failed">
         <source>Failed to delete filter</source>
-        <translation>Failed to delete filter</translation>
+        <translation type="vanished">Failed to delete filter</translation>
     </message>
     <message id="id-connection">
         <source>Connection</source>
@@ -440,6 +440,78 @@
         <source>Show connection credentials</source>
         <oldsource>Show server info</oldsource>
         <translation>Show connection credentials</translation>
+    </message>
+    <message id="id-error-failed-to-fetch-data">
+        <source>Failed to fetch data from server</source>
+        <translation>Failed to fetch data from server</translation>
+    </message>
+    <message id="id-error-failed-to-toggle-filter">
+        <source>Failed to toggle filter on/off</source>
+        <translation>Failed to toggle filter on/off</translation>
+    </message>
+    <message id="id-error-could-not-get-version-info">
+        <source>Could not get version info from server</source>
+        <translation>Could not get version info from server</translation>
+    </message>
+    <message id="id-pihole-update">
+        <source>PiHole update available</source>
+        <translation>PiHole update available</translation>
+    </message>
+    <message id="id-core-update-available">
+        <source>An update for PiHole core is available</source>
+        <translation>An update for PiHole core is available</translation>
+    </message>
+    <message id="id-web-update-available">
+        <source>An update for PiHole web is available</source>
+        <translation>An update for PiHole web is available</translation>
+    </message>
+    <message id="id-ftl-update-available">
+        <source>An update for PiHole FTL is available</source>
+        <translation>An update for PiHole FTL is available</translation>
+    </message>
+    <message id="id-social-media">
+        <source>Social Media</source>
+        <translation>Social Media</translation>
+    </message>
+    <message id="id-copied-to-clipboard">
+        <source>Copied to clipboard</source>
+        <translation>Copied to clipboard</translation>
+    </message>
+    <message id="id-error-failed-to-add-filter">
+        <source>Failed to add filter</source>
+        <translation>Failed to add filter</translation>
+    </message>
+    <message id="id-error-failed-to-delete-filter">
+        <source>Failed to delete filter</source>
+        <translation>Failed to delete filter</translation>
+    </message>
+    <message id="id-error-failed-to-get-whitelist">
+        <source>Failed to get whitelist</source>
+        <translation>Failed to get whitelist</translation>
+    </message>
+    <message id="id-error-failed-to-get-regex-whitelist">
+        <source>Failed to get regex whitelist</source>
+        <translation>Failed to get regex whitelist</translation>
+    </message>
+    <message id="id-error-failed-to-get-blacklist">
+        <source>Failed to get blacklist</source>
+        <translation>Failed to get blacklist</translation>
+    </message>
+    <message id="id-error-failed-to-get-regex-blacklist">
+        <source>Failed to get regex blacklist</source>
+        <translation>Failed to get regex blacklist</translation>
+    </message>
+    <message id="id-pihole-not-found">
+        <source>Could not connect to PiHole server</source>
+        <translation>Could not connect to PiHole server</translation>
+    </message>
+    <message id="id-pihole-api-not-enabled">
+        <source>Admin API is not enabled on PiHole server</source>
+        <translation>Admin API is not enabled on PiHole server</translation>
+    </message>
+    <message id="id-reset-and-close-application">
+        <source>Reset and close application</source>
+        <translation>Reset and close application</translation>
     </message>
 </context>
 </TS>

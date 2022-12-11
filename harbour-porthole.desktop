@@ -1,11 +1,12 @@
 [Desktop Entry]
 Type=Application
-Icon=harbour-porthole
 X-Nemo-Application-Type=silica-qt5
-Exec=harbour-porthole
+Icon=harbour-porthole
+Exec=sailfish-qml harbour-porthole
 Name=Porthole
 
 [X-Sailjail]
 OrganizationName=org.nubecula
-ApplicationName=Porthole
+ApplicationName=porthole
 Permissions=Internet
+

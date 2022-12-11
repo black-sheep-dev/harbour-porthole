@@ -1,12 +1,11 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-import org.nubecula.harbour.porthole 1.0
-
 Dialog {
     id: dialog
     allowedOrientations: Orientation.Portrait
     acceptDestination: Qt.resolvedUrl("WizardFinalPage.qml")
+    canAccept: tokenField.text.length > 0
 
     DialogHeader {
         id: header
@@ -64,20 +63,10 @@ Dialog {
             //% "Enter access token"
             placeholderText: qsTrId("id-enter-access-token")
 
-            text: Porthole.accessToken
-
-            onTextChanged: checkInput()
-
             focus: true
         }
     }
 
-    function checkInput() { canAccept = tokenField.text.length > 0 }
-
-    onAccepted: {
-        Porthole.accessToken = tokenField.text
-    }
-
-    Component.onCompleted: checkInput()
+    onAccepted: config.accessToken = tokenField.text
 }
 

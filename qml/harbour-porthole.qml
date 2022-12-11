@@ -1,12 +1,90 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import Nemo.Configuration 1.0
 import Nemo.Notifications 1.0
 
 import "pages"
-
-import org.nubecula.harbour.porthole 1.0
+import "."
 
 ApplicationWindow {
+    property bool filterEnabled: false
+    property var summary
+    property var versions
+
+    function refresh() {
+        Api.requestGet("summaryRaw", function(data, status) {
+            if (status !== 200) {
+                //% "Failed to fetch data from server"
+                notification.show(qsTrId("id-error-failed-to-fetch-data"))
+                return
+            }
+
+            summary = data
+            filterEnabled = data.status === "enabled"
+        })
+    }
+
+    function toggleFilter() {
+        Api.requestGet(filterEnabled ? "disable" : "enable", function(data, status) {
+            if (status !== 200) {
+                //% "Failed to toggle filter on/off"
+                notification.show(qsTrId("id-error-failed-to-toggle-filter"))
+                return
+            }
+
+            filterEnabled = data.status === "enabled"
+        })
+    }
+
+    function getVersions() {
+        Api.requestGet("versions", function (data, status) {
+            if (status !== 200) {
+                //% "Could not get version info from server"
+                notification.show(qsTrId("id-error-could-not-get-version-info"))
+                return
+            }
+
+            versions = data
+
+            if (data.core_current !== data.core_latest) {
+                //% "PiHole update available"
+                notification.showPopup(qsTrId("id-pihole-update"),
+                                       //% "An update for PiHole core is available"
+                                       qsTrId("id-core-update-available") + ": " + data.core_latest)
+            }
+            if (data.web_current !== data.web_latest) {
+                //% "PiHole update available"
+                notification.showPopup(qsTrId("id-pihole-update"),
+                                       //% "An update for PiHole web is available"
+                                       qsTrId("id-web-update-available") + ": " + data.web_latest)
+            }
+            if (data.FTL_current !== data.FTL_latest) {
+                //% "PiHole update available"
+                notification.showPopup(qsTrId("id-pihole-update"),
+                                       //% "An update for PiHole FTL is available"
+                                       qsTrId("id-ftl-update-available") + ": " + data.FTL_latest)
+            }
+        })
+    }
+
+    id: app
+
+    ConfigurationGroup {
+        id: config
+        path: "/apps/harbour-porthole"
+        synchronous: true
+
+        property string accessToken: ""
+        property string url: ""
+
+        onAccessTokenChanged: Api.accessToken = accessToken
+        onUrlChanged: Api.url = url
+
+        Component.onCompleted: {
+            Api.accessToken = accessToken
+            Api.url = url
+        }
+    }
 
     Notification {
         function show(message, icn) {
@@ -20,7 +98,7 @@ ApplicationWindow {
             replacesId = 0
             previewSummary = title
             previewBody = message
-            icon = icn
+            icon = icn || ""
             publish()
         }
 
@@ -29,61 +107,15 @@ ApplicationWindow {
         expireTimeout: 3000
     }
 
-    Connections {
-        target: Porthole
-        onRequestFailed: {
-            switch (error) {
-            case 0:
-                return
-
-            case 1: // QNetworkReply::ConnectionRefusedError
-                //% "Connection refused"
-                notification.show(qsTrId("id-error-connection-refused"))
-                break
-
-            case 3: // QNetworkReply::HostNotFoundError
-                //% "Host not found"
-                notification.show(qsTrId("id-error-host-not-found"))
-                break
-
-            case 4: // QNetworkReply::TimeoutError
-                //% "Connection timed out"
-                notification.show(qsTrId("id-error-connection-timed-out"))
-                break
-
-            case 6: // QNetworkReply::SslHandshakeFailedError
-                //% "Ssl handshake failed"
-                notification.show(qsTrId("id-error-ssl-handshake-failed"))
-                break
-
-            case 201: // QNetworkReply::ContentAccessDenied
-                //% "Access denied"
-                notification.show(qsTrId("id-error-access-denied"))
-                break
-
-            case 203: // QNetworkReply::ContentNotFoundError
-                //% "Not found"
-                notification.show(qsTrId("id-error-not-found"))
-                break
-
-            case 401: // QNetworkReply::InternalServerError
-                //% "Internal server error"
-                notification.show(qsTrId("id-error-internal-server-error"))
-                break
-
-            default:
-                //% "Unkown connection error"
-                notification.show(qsTrId("id-error-unkown-connection-error"))
-                break
-            }
-        }
-    }
-
-    initialPage: Component { MainPage { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
-
     Component.onCompleted: {
-        Porthole.initialize()
+        if (config.accessToken.length === 0 || config.url.length === 0) {
+            pageStack.push(Qt.resolvedUrl("pages/wizard/WizardIntroPage.qml"))
+        } else {
+            pageStack.push(Qt.resolvedUrl("pages/MainPage.qml"))
+            refresh()
+            getVersions()
+        }
     }
 }

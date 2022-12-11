@@ -1,18 +1,14 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-import org.nubecula.harbour.porthole 1.0
-
 CoverBackground {
-    property bool enabled: false
-
     Image {
         anchors.left: parent.left
         anchors.top: parent.top
         width: parent.width
         height: sourceSize.height * width / sourceSize.width
         smooth: true
-        source: "qrc:///cover/cover-background"
+        source: "/usr/share/harbour-porthole/images/cover-background.svg"
         opacity: 0.1
     }
 
@@ -48,7 +44,7 @@ CoverBackground {
             id: totalQueries
             x: Theme.horizontalPageMargin
             font.pixelSize: Theme.fontSizeExtraSmall
-            text: Porthole.summary.dns_queries_today
+            text: summary.dns_queries_today
         }
         Label {
             //% "Queries blocked"
@@ -61,7 +57,7 @@ CoverBackground {
             id: blockedQueries
             x: Theme.horizontalPageMargin
             font.pixelSize: Theme.fontSizeExtraSmall
-            text: Porthole.summary.ads_blocked_today
+            text: summary.ads_blocked_today
         }
         Label {
             //% "Percent blocked"
@@ -74,7 +70,7 @@ CoverBackground {
             id: blockedPercent
             x: Theme.horizontalPageMargin
             font.pixelSize: Theme.fontSizeExtraSmall
-            text: Number(Porthole.summary.ads_percentage_today).toLocaleString(Qt.locale()) + " %"
+            text: Number(summary.ads_percentage_today).toLocaleString(Qt.locale()) + " %"
         }
     }
 
@@ -82,22 +78,13 @@ CoverBackground {
         id: coverAction
 
         CoverAction {
-            iconSource: enabled ? "image://theme/icon-cover-pause" : "image://theme/icon-cover-play"
-            onTriggered: Porthole.sendRequest(enabled ? "disable" : "enable", true)
+            iconSource: filterEnabled ? "image://theme/icon-cover-pause" : "image://theme/icon-cover-play"
+            onTriggered: app.toggleFilter()
         }
 
         CoverAction {
             iconSource: "image://theme/icon-cover-refresh"
-            onTriggered: refresh()
+            onTriggered: app.refresh()
         }
-    }
-
-    function refresh() {
-        Porthole.sendRequest("summaryRaw")
-    }
-
-    Connections {
-        target: Porthole
-        onRequestFinished: if (query === "status" || query === "enable" || query === "disable" || query === "summaryRaw") enabled = (data.status === "enabled")
     }
 }

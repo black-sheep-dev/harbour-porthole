@@ -1,8 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-import org.nubecula.harbour.porthole 1.0
-
 Dialog {
     id: dialog
 
@@ -25,7 +23,7 @@ Dialog {
         anchors.top: header.bottom
         x: Theme.horizontalPageMargin
         width: parent.width - 2*x
-        spacing: Theme.paddingMedium
+        spacing: Theme.paddingLarge
 
         Image {
             id: logo
@@ -119,7 +117,7 @@ Dialog {
                 text: qsTrId("id-reset")
                 //% "Resetting application"
                 onClicked: resetPopup.execute(qsTrId("id-resseting"), function() {
-                    Porthole.reset()
+                    config.clear()
                 })
             }
         }

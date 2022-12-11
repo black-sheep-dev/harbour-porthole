@@ -1,8 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-import org.nubecula.harbour.porthole 1.0
-
 Dialog {
     id: dialog
     allowedOrientations: Orientation.Portrait
@@ -35,7 +33,5 @@ Dialog {
             font.pixelSize: Theme.fontSizeLarge
         }
     }
-
-    onAccepted: Porthole.saveSettings()
 }
 

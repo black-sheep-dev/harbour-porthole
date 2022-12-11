@@ -1,25 +1,29 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-import org.nubecula.harbour.porthole 1.0
+import "../."
 
 Page {
     property string title
     property int type: 0
+
+    property var items: []
 
     id: page
 
     allowedOrientations: Orientation.All
 
     SilicaListView {
-        id: listView
-        model: SortModel {
-            id: sortModel
-            sortRole: CounterModel.CountRole
-            sourceModel: CounterModel {
-                id: counterModel
+        PullDownMenu {
+            MenuItem {
+                //% "Refresh"
+                text: qsTrId("id-refresh")
+                onClicked: refresh()
             }
         }
+
+        id: listView
+        model: items
 
         anchors.fill: parent
         header: PageHeader {
@@ -48,9 +52,9 @@ Page {
                         wrapMode: Text.WrapAnywhere
                         text: {
                             if (type === 2 || type === 3) {
-                                model.name.split("|")[0]
+                                modelData.name.split("|")[0]
                             } else {
-                                return model.name
+                                return modelData.name
                             }
                         }
                         color: pressed ? Theme.secondaryHighlightColor:Theme.highlightColor
@@ -58,7 +62,7 @@ Page {
                     }
                     Label {
                         //% "%n Request(s)"
-                        text: qsTrId("id-requests", model.count)
+                        text: qsTrId("id-requests", modelData.count)
                         color: Theme.secondaryColor
                         font.pixelSize: Theme.fontSizeSmall
                     }
@@ -70,7 +74,7 @@ Page {
                     width: Theme.itemSizeExtraSmall
                     anchors.verticalCenter: parent.verticalCenter
 
-                    progressValue: Math.min(model.count / Porthole.summary.dns_queries_all_types, 1)
+                    progressValue: Math.min(modelData.count / summary.dns_queries_all_types, 1)
 
 
                     Label {
@@ -85,45 +89,59 @@ Page {
         VerticalScrollDecorator {}
     }
 
+    function setItems(data) {
+        var arr = []
+        Object.keys(data).forEach(function(key) {
+            var item = {
+                name: key,
+                count: data[key]
+            }
+
+            arr.push(item)
+        })
+
+        items = arr
+    }
+
     function refresh() {
+        var query
         switch (page.type) {
         case 0:
         case 1:
-            Porthole.sendRequest("topItems", true)
+            query = "topItems"
             break; 
 
         case 2:
-            Porthole.sendRequest("topClients", true)
+            query = "topClients"
             break;
 
         case 3:
-            Porthole.sendRequest("topClientsBlocked", true)
+            query = "topClientsBlocked"
             break;
 
         default:
-            break;
+            return;
         }
-    }
 
-    Connections {
-        target: Porthole
-        onRequestFinished: {
+        Api.requestGet(query, function(data, status) {
+            if (status !== 200) {
+                //% "Failed to fetch data"
+                notification.show(qsTrId("id-error-failed-to-fetch-data"))
+                return
+            }
+
             if (query === "topItems") {
                 if (type === 0) {
-                    counterModel.setItems(data.top_queries)
-                    sortModel.sortModel(Qt.DescendingOrder)
+                    setItems(data.top_queries)
                 } else if (type === 1) {
-                    counterModel.setItems(data.top_ads)
-                    sortModel.sortModel(Qt.DescendingOrder)
+                    setItems(data.top_ads)
                 }
             } else if (query === "topClients" && type === 2) {
-                counterModel.setItems(data.top_sources)
-                sortModel.sortModel(Qt.DescendingOrder)
+                setItems(data.top_sources)
             } else if (query === "topClientsBlocked" && type === 3) {
-                counterModel.setItems(data.top_sources_blocked)
-                sortModel.sortModel(Qt.DescendingOrder)
+                setItems(data.top_sources_blocked)
             }
-        }
+        })
     }
 
     Component.onCompleted: refresh()

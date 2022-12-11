@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-import org.nubecula.harbour.porthole 1.0
+import "../../."
 
 Dialog {
     property bool connectionError: false
@@ -11,6 +11,24 @@ Dialog {
     acceptDestination: Qt.resolvedUrl("WizardTokenPage.qml")
 
     canAccept: false
+
+    function testConnection() {
+        Api.url = urlField.text
+        Api.requestGet("status", function(data, status) {
+            if (status !== 200) {
+                //% "Could not connect to PiHole server"
+                notification.show(qsTrId("id-pihole-not-found"))
+                return
+            }
+
+            if (data.status !== "enabled") {
+                //% "Admin API is not enabled on PiHole server"
+                notification.show(qsTrId("id-pihole-api-not-enabled"))
+                return
+            }
+            canAccept = true
+        })
+    }
 
     DialogHeader {
         id: header
@@ -75,8 +93,6 @@ Dialog {
             //% "Enter URL (e.g. http://pi-hole.local)"
             placeholderText: qsTrId("id-enter-url")
 
-            text: Porthole.url
-
             inputMethodHints: Qt.ImhUrlCharactersOnly
             validator: RegExpValidator {
                 regExp: /^(http(s?):\/\/(www\.)?)[a-zA-Z0-9]+([\-\.]{1}[a-zA-Z0-9]+)*(\(.[a-zA-Z]{2,5})?(:[0-9]{1,5})?(\/.*)?$/g
@@ -111,31 +127,8 @@ Dialog {
             color: Theme.errorColor
             font.pixelSize: Theme.fontSizeExtraSmall
         }
-
     }
 
-    function testConnection() {
-        if (!urlField.acceptableInput) return
-
-        connectionError = false
-        Porthole.setUrl(urlField.text)
-        Porthole.sendRequest("status")
-    }
-
-    Connections {
-        target: Porthole
-        onRequestFailed: {
-            canAccept = false
-            connectionError = true
-
-        }
-        onRequestFinished: {
-            if (query !== "status") return
-            connectionError = false
-            canAccept = true
-        }
-    }
-
-    Component.onCompleted: if (Porthole.url.length > 0) testConnection()
+    onAccepted: config.url = urlField.text
 }
 

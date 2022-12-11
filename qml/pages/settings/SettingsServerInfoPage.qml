@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-import org.nubecula.harbour.porthole 1.0
+import "../../."
 
 Page {
     id: page
@@ -32,7 +32,7 @@ Page {
             DetailItem {
                 //% "File exists"
                 label: qsTrId("id-file-exists")
-                value: Porthole.summary.gravity_last_updated.file_exists ?
+                value: summary.gravity_last_updated.file_exists ?
                            //% "yes"
                            qsTrId("id-yes") :
                            //% "no"
@@ -42,20 +42,20 @@ Page {
             DetailItem {
                 //% "Last update"
                 label: qsTrId("id-last-update")
-                value: new Date(Porthole.summary.gravity_last_updated.absolute * 1000).toLocaleString()
+                value: new Date(summary.gravity_last_updated.absolute * 1000).toLocaleString()
             }
 
             DetailItem {
                 //% "Timespan"
                 label: qsTrId("id-timespan")
                 //% "%n day(s)"
-                value: qsTrId("id-n-days", "0", Porthole.summary.gravity_last_updated.relative.days)
+                value: qsTrId("id-n-days", summary.gravity_last_updated.relative.days)
                         + "\n"
                         //% "%n hour(s)"
-                        + qsTrId("id-n-hours", "0", Porthole.summary.gravity_last_updated.relative.hours )
+                        + qsTrId("id-n-hours", summary.gravity_last_updated.relative.hours )
                         + "\n"
                         //% "%n minute(s)"
-                        + qsTrId("id-n-minutes", "0", Porthole.summary.gravity_last_updated.relative.minutes)
+                        + qsTrId("id-n-minutes", summary.gravity_last_updated.relative.minutes)
             }
 
             SectionHeader {
@@ -66,21 +66,23 @@ Page {
             DetailItem {
                 //% "Core"
                 label: qsTrId("id-core")
-                value: Porthole.versions.core_current //+ Porthole.versions.core_update ? (" (" + Porthole.versions.core_latest + ")") : ""
+                value: versions.core_current
             }
 
             DetailItem {
                 //% "Web"
                 label: qsTrId("id-web")
-                value: Porthole.versions.web_current //+ Porthole.versions.web_update ? (" (" + Porthole.versions.web_latest + ")") : ""
+                value: versions.web_current
             }
 
             DetailItem {
                 //% "FTL"
                 label: qsTrId("id-ftl")
-                value: Porthole.versions.FTL_current //+ Porthole.versions.FTL_update ? (" (" + Porthole.versions.FTL_latest + ")") : ""
+                value: versions.FTL_current
             }
 
         }
     }
+
+    Component.onCompleted: app.getVersions()
 }

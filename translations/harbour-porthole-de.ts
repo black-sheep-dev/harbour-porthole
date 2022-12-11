@@ -69,35 +69,35 @@
     </message>
     <message id="id-error-connection-refused">
         <source>Connection refused</source>
-        <translation>Verbindung abgelehnt</translation>
+        <translation type="vanished">Verbindung abgelehnt</translation>
     </message>
     <message id="id-error-host-not-found">
         <source>Host not found</source>
-        <translation>Host nicht gefunden</translation>
+        <translation type="vanished">Host nicht gefunden</translation>
     </message>
     <message id="id-error-connection-timed-out">
         <source>Connection timed out</source>
-        <translation>Zeitüberschreitung der Verbindung</translation>
+        <translation type="vanished">Zeitüberschreitung der Verbindung</translation>
     </message>
     <message id="id-error-ssl-handshake-failed">
         <source>Ssl handshake failed</source>
-        <translation>SSL-Handshake fehlgeschlagen</translation>
+        <translation type="vanished">SSL-Handshake fehlgeschlagen</translation>
     </message>
     <message id="id-error-access-denied">
         <source>Access denied</source>
-        <translation>Zugriff abgelehnt</translation>
+        <translation type="vanished">Zugriff abgelehnt</translation>
     </message>
     <message id="id-error-not-found">
         <source>Not found</source>
-        <translation>Nicht gefunden</translation>
+        <translation type="vanished">Nicht gefunden</translation>
     </message>
     <message id="id-error-internal-server-error">
         <source>Internal server error</source>
-        <translation>Interner Server Fehler</translation>
+        <translation type="vanished">Interner Server Fehler</translation>
     </message>
     <message id="id-error-unkown-connection-error">
         <source>Unkown connection error</source>
-        <translation>Unbekannter Verbindungsfehler</translation>
+        <translation type="vanished">Unbekannter Verbindungsfehler</translation>
     </message>
     <message id="id-about">
         <source>About</source>
@@ -110,7 +110,7 @@
     <message id="id-about-desc">
         <source>Infos about Porthole</source>
         <oldsource>Porthole is a Sailfish OS application to control a Pi-hole server.</oldsource>
-        <translation>Infos über Porthole</translation>
+        <translation type="vanished">Infos über Porthole</translation>
     </message>
     <message id="id-translations">
         <source>Translations</source>
@@ -225,7 +225,7 @@
     </message>
     <message id="id-reset-application">
         <source>Reset application</source>
-        <translation>Setze Anwendung zurück</translation>
+        <translation type="vanished">Setze Anwendung zurück</translation>
     </message>
     <message id="id-connection-settings">
         <source>Connection Settings</source>
@@ -249,11 +249,11 @@
     </message>
     <message id="id-hide-search">
         <source>Hide Search</source>
-        <translation>Suche ausblenden</translation>
+        <translation type="vanished">Suche ausblenden</translation>
     </message>
     <message id="id-search">
         <source>Search</source>
-        <translation>Suchen</translation>
+        <translation type="vanished">Suchen</translation>
     </message>
     <message id="id-whitelist">
         <source>Whitelist</source>
@@ -426,11 +426,11 @@
     </message>
     <message id="id-add-filter-failed">
         <source>Failed to add filter</source>
-        <translation>Hinzufügen des Filters fehlgeschlagen</translation>
+        <translation type="vanished">Hinzufügen des Filters fehlgeschlagen</translation>
     </message>
     <message id="id-del-filter-failed">
         <source>Failed to delete filter</source>
-        <translation>Löschen des Filters fehlgeschlagen</translation>
+        <translation type="vanished">Löschen des Filters fehlgeschlagen</translation>
     </message>
     <message id="id-connection">
         <source>Connection</source>
@@ -440,6 +440,78 @@
         <source>Show connection credentials</source>
         <oldsource>Show server info</oldsource>
         <translation>Zeige Verbindungsdetails</translation>
+    </message>
+    <message id="id-error-failed-to-fetch-data">
+        <source>Failed to fetch data from server</source>
+        <translation>Konnte Daten nicht vom Server laden</translation>
+    </message>
+    <message id="id-error-failed-to-toggle-filter">
+        <source>Failed to toggle filter on/off</source>
+        <translation>Konnte Filter nicht an-/ausschalten</translation>
+    </message>
+    <message id="id-error-could-not-get-version-info">
+        <source>Could not get version info from server</source>
+        <translation>Konnte Version Informationen nicht vom Server laden</translation>
+    </message>
+    <message id="id-pihole-update">
+        <source>PiHole update available</source>
+        <translation>Ein Update für PiHole ist verfügbar</translation>
+    </message>
+    <message id="id-core-update-available">
+        <source>An update for PiHole core is available</source>
+        <translation>Ein Update für den PiHole Core ist verfügbar</translation>
+    </message>
+    <message id="id-web-update-available">
+        <source>An update for PiHole web is available</source>
+        <translation>Ein Update für  PiHole Web ist verfügbar</translation>
+    </message>
+    <message id="id-ftl-update-available">
+        <source>An update for PiHole FTL is available</source>
+        <translation>Ein Update für  PiHole FTL ist verfügbar</translation>
+    </message>
+    <message id="id-social-media">
+        <source>Social Media</source>
+        <translation>Soziale Medien</translation>
+    </message>
+    <message id="id-copied-to-clipboard">
+        <source>Copied to clipboard</source>
+        <translation>In die Zwischenablage kopiert</translation>
+    </message>
+    <message id="id-error-failed-to-add-filter">
+        <source>Failed to add filter</source>
+        <translation>Hinzufügen des Filters fehlgeschlagen</translation>
+    </message>
+    <message id="id-error-failed-to-delete-filter">
+        <source>Failed to delete filter</source>
+        <translation>Löschen des Filters fehlgeschlagen</translation>
+    </message>
+    <message id="id-error-failed-to-get-whitelist">
+        <source>Failed to get whitelist</source>
+        <translation>Laden der Whitelist fehlgeschlagen</translation>
+    </message>
+    <message id="id-error-failed-to-get-regex-whitelist">
+        <source>Failed to get regex whitelist</source>
+        <translation>Laden der Regex Whitelist fehlgeschlagen</translation>
+    </message>
+    <message id="id-error-failed-to-get-blacklist">
+        <source>Failed to get blacklist</source>
+        <translation>Laden der Blacklist fehlgeschlagen</translation>
+    </message>
+    <message id="id-error-failed-to-get-regex-blacklist">
+        <source>Failed to get regex blacklist</source>
+        <translation>Laden der Regex Blacklist fehlgeschlagen</translation>
+    </message>
+    <message id="id-pihole-not-found">
+        <source>Could not connect to PiHole server</source>
+        <translation>Konnte Verbindung zu PiHole Server nicht aufbauen</translation>
+    </message>
+    <message id="id-pihole-api-not-enabled">
+        <source>Admin API is not enabled on PiHole server</source>
+        <translation>Die Admin API ist auf dem PiHole Server nicht aktiviert</translation>
+    </message>
+    <message id="id-reset-and-close-application">
+        <source>Reset and close application</source>
+        <translation type="unfinished">Anwendung wird zurückgesetzt und geschlossen</translation>
     </message>
 </context>
 </TS>

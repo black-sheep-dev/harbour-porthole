@@ -1,17 +1,14 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-import org.nubecula.harbour.porthole 1.0
-
 Page {
     id: page
 
     allowedOrientations: Orientation.All
 
     function applyChanges() {
-        if (urlField.acceptableInput) Porthole.url = urlField.text
-        if (tokenField.text.length > 0) Porthole.accessToken = tokenField.text
-        Porthole.saveSettings()
+        if (urlField.acceptableInput) config.url = urlField.text
+        if (tokenField.text.length > 0) config.accessToken = tokenField.text
     }
 
     RemorsePopup { id: remorse }
@@ -21,13 +18,11 @@ Page {
             MenuItem {
                 //% "Reset"
                 text: qsTrId("id-reset")
-                //% "Reset application"
-                onClicked: remorse.execute(qsTrId("id-reset-application"), function() {
-                    Porthole.url = ""
-                    Porthole.accessToken = ""
-                    Porthole.saveSettings()
-                    pageStack.clear()
-                    pageStack.push(Qt.resolvedUrl("MainPage.qml"))
+                //% "Reset and close application"
+                onClicked: remorse.execute(qsTrId("id-reset-and-close-application"), function() {
+                    config.url = ""
+                    config.accessToken = ""
+                    Qt.quit()
                 })
             }
         }
@@ -56,7 +51,7 @@ Page {
                 //% "Enter URL (e.g. http://pi-hole.local)"
                 placeholderText: qsTrId("id-enter-url")
 
-                text: Porthole.url
+                text: config.url
 
                 inputMethodHints: Qt.ImhUrlCharactersOnly
                 validator: RegExpValidator {
@@ -79,7 +74,7 @@ Page {
                 //% "Enter access token"
                 placeholderText: qsTrId("id-enter-access-token")
 
-                text: Porthole.accessToken
+                text: config.accessToken
 
                 EnterKey.onClicked: focus = false
             }
