@@ -39,6 +39,10 @@ If you missing your native language you are welcome to support this project with
 
 Follow this project on [Mastodon](https://social.nubecula.org/@porthole)
 
+## Install Pi-hole
+
+If you dont know how to setup a Pi-hole server, you can checkout my [tutorial](https://blacksheeps.site/posts/install-pi-hole-with-docker-compose/).
+
 ## Donations
 
 If you like my work, you can buy me a beer! 
