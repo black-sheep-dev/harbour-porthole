@@ -9,16 +9,17 @@ Name:       harbour-porthole
 # << macros
 
 Summary:    Porthole
-Version:    0.3.2
+Version:    0.4.0
 Release:    1
 Group:      Qt/Qt
-License:    MIT
+License:    GPLv2
+BuildArch:  noarch
 URL:        https://github.com/black-sheep-dev/harbour-porthole
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-porthole.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
-Requires:   nemo-qml-plugin-notifications-qt5
-BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2
+Requires:   libsailfishapp-launcher
+BuildRequires:  pkgconfig(sailfishapp) >= 1.0.3
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
@@ -29,22 +30,22 @@ BuildRequires:  desktop-file-utils
 %description
 Porthole is a Sailfish OS application to control a Pi-hole server
 
-  %if "%{?vendor}" == "chum"
-  PackageName: Porthole
-  Type: desktop-application
-  Categories:
-      - Utility
-  Custom:
-      DescriptionMD: https://github.com/black-sheep-dev/harbour-porthole/raw/master/README.md
-      Repo: https://github.com/black-sheep-dev/harbour-porthole/
-  Icon: https://raw.githubusercontent.com/black-sheep-dev/harbour-porthole/master/icons/172x172/harbour-porthole.png
-  Screenshots:
-      - https://github.com/black-sheep-dev/harbour-porthole/raw/master/metadata/screenshot01.png
-      - https://github.com/black-sheep-dev/harbour-porthole/raw/master/metadata/screenshot02.png
-      - https://github.com/black-sheep-dev/harbour-porthole/raw/master/metadata/screenshot03.png
-  Url:
-      Donation: https://www.paypal.com/paypalme/nubecula/1
-  %endif
+%if "%{?vendor}" == "chum"
+PackageName: Porthole
+Type: desktop-application
+Categories:
+    - Utility
+Custom:
+    DescriptionMD: https://github.com/black-sheep-dev/harbour-porthole/raw/master/README.md
+    Repo: https://github.com/black-sheep-dev/harbour-porthole/
+Icon: https://raw.githubusercontent.com/black-sheep-dev/harbour-porthole/master/icons/172x172/harbour-porthole.png
+Screenshots:
+    - https://github.com/black-sheep-dev/harbour-porthole/raw/master/metadata/screenshot01.png
+    - https://github.com/black-sheep-dev/harbour-porthole/raw/master/metadata/screenshot02.png
+    - https://github.com/black-sheep-dev/harbour-porthole/raw/master/metadata/screenshot03.png
+Url:
+    Donation: https://www.paypal.com/paypalme/nubecula/1
+%endif
 
 
 %prep
@@ -79,7 +80,7 @@ desktop-file-install --delete-original       \
 
 %files
 %defattr(-,root,root,-)
-%{_bindir}
+%defattr(0644,root,root,-)
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
