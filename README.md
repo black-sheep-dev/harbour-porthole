@@ -19,7 +19,7 @@ To authenticate with Pi-hole server an access token is necessary. You can find i
 - Show statistics of current day
 
 ## Planned Features
-- Show more informations / analysis
+- Show more information / analysis
 - More administrative functions
 - Feature requests
 
@@ -34,6 +34,10 @@ If you missing your native language you are welcome to support this project with
 [https://weblate.nubecula.org/engage/harbour-porthole/](https://weblate.nubecula.org/engage/harbour-porthole/)
 
 [![https://weblate.nubecula.org/engage/harbour-porthole/](https://weblate.nubecula.org/widgets/harbour-porthole/-/multi-auto.svg)](https://weblate.nubecula.org/engage/harbour-porthole/)
+
+## Social Media
+
+Follow this project on [Mastodon](https://social.nubecula.org/@porthole)
 
 ## Donations
 
